@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horario y Malla - Ciencias Sociales</title>
+  <title>Ciencias Sociales - Horario y Malla</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -49,47 +49,50 @@
       display: block;
     }
 
-    /* 🎨 Estilo del horario */
+    /* 📅 Estilo horario */
     .schedule {
       display: grid;
-      grid-template-columns: 100px repeat(5, 1fr);
-      gap: 8px;
-      max-width: 900px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      max-width: 1000px;
       margin: auto;
     }
 
-    time, .day {
-      background: #ffeef5;
-      padding: 6px;
-      border-radius: 8px;
-      font-size: 0.85em;
+    .day {
+      background: #ffeef2;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .day h2 {
+      text-align: center;
+      color: #d36b8d;
       font-weight: bold;
+      margin-bottom: 10px;
     }
 
     .class {
-      padding: 10px;
-      border-radius: 10px;
+      background: #fff;
+      margin: 8px 0;
+      padding: 8px;
+      border-left: 5px solid #d36b8d;
+      border-radius: 6px;
+    }
+
+    .class strong {
+      display: block;
       font-size: 0.9em;
-      line-height: 1.5em;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
 
     .class small {
-      font-size: 0.7em;
       display: block;
-      margin-top: 4px;
-      color: #444;
+      font-size: 0.8em;
+      color: #555;
     }
 
-    /* Colores pastel */
-    .psicologia { background-color: #F4C2C2; }
-    .mediacion { background-color: #C7E0DE; }
-    .sociales { background-color: #D7E3D2; }
-    .comunicacion { background-color: #DCD3E7; }
-    .logica { background-color: #F6F2CD; }
-    .filosofia { background-color: #FBD7C4; }
-
-    /* 📚 Estilo de la malla */
+    /* 📚 Estilo malla */
     .malla {
       max-width: 900px;
       margin: auto;
@@ -109,6 +112,18 @@
       color: #d36b8d;
       font-weight: bold;
       margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .semestre button {
+      background: #f4c2c2;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8em;
     }
 
     .materia {
@@ -117,16 +132,38 @@
       border-left: 5px solid #d36b8d;
       background: #fff;
       border-radius: 5px;
+      cursor: pointer;
     }
 
     .materia.locked {
       opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .materia small {
       display: block;
       font-size: 0.75em;
       color: #666;
+    }
+
+    /* 🔥 Tachado */
+    .materia.tachada {
+      text-decoration: line-through;
+      color: #777;
+      background: #eee;
+      border-left-color: #aaa;
+    }
+
+    /* Botón reiniciar todo */
+    .reset-all {
+      margin: 15px 0;
+      padding: 8px 15px;
+      border: none;
+      background: #d36b8d;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -139,171 +176,223 @@
     <button class="tab-button" onclick="openTab('malla')">Malla Curricular</button>
   </div>
 
-  <!-- Pestaña Horario -->
+  <!-- 📅 Pestaña Horario -->
   <div id="horario" class="tab-content active">
     <div class="schedule">
-      <!-- Encabezados -->
-      <div></div>
-      <div class="day">Lunes</div>
-      <div class="day">Martes</div>
-      <div class="day">Miércoles</div>
-      <div class="day">Jueves</div>
-      <div class="day">Viernes</div>
-
-      <!-- 6-9 -->
-      <div class="time">6:00 - 9:00 AM</div>
-      <div></div><div></div><div></div>
-      <div class="class psicologia">Psicología Evolutiva <small>Bloque 29, Salón 01</small></div>
-      <div></div>
-
-      <!-- 9-11 -->
-      <div class="time">9:00 - 11:00 AM</div>
-      <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>
-      <div></div><div></div><div></div><div></div>
-
-      <!-- 10-12 -->
-      <div class="time">10:00 - 12:00 PM</div>
-      <div></div><div></div>
-      <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>
-      <div></div><div></div>
-
-      <!-- 12-3 -->
-      <div class="time">12:00 - 3:00 PM</div>
-      <div class="class sociales">Introducción a las Ciencias Sociales <small>Bloque 14, Salón 204</small></div>
-      <div></div>
-      <div class="class comunicacion">Competencias Comunicativas I <small>Bloque 4, Salón 03</small></div>
-      <div class="class logica">Lógica <small>Bloque 4, Salón 03</small></div>
-      <div class="class filosofia">Filosofía Antigua <small>Bloque 11, Salón 406</small></div>
+      <div class="day">
+        <h2>Lunes</h2>
+        <div class="class">
+          <strong>Mediación Tecnológica</strong>
+          <small>09:00 - 10:59 | Salón B-201</small>
+        </div>
+        <div class="class">
+          <strong>Introducción a las Ciencias Sociales</strong>
+          <small>12:00 - 14:59 | Salón C-101</small>
+        </div>
+      </div>
+      <div class="day">
+        <h2>Martes</h2>
+      </div>
+      <div class="day">
+        <h2>Miércoles</h2>
+        <div class="class">
+          <strong>Mediación Tecnológica</strong>
+          <small>10:00 - 11:59 | Salón B-201</small>
+        </div>
+        <div class="class">
+          <strong>Competencias Comunicativas</strong>
+          <small>13:00 - 15:59 | Salón A-202</small>
+        </div>
+      </div>
+      <div class="day">
+        <h2>Jueves</h2>
+        <div class="class">
+          <strong>Psicología Evolutiva</strong>
+          <small>06:00 - 08:59 | Salón D-105</small>
+        </div>
+        <div class="class">
+          <strong>Lógica</strong>
+          <small>13:00 - 15:59 | Salón B-301</small>
+        </div>
+      </div>
+      <div class="day">
+        <h2>Viernes</h2>
+        <div class="class">
+          <strong>Filosofía Antigua</strong>
+          <small>13:00 - 15:59 | Salón C-203</small>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Pestaña Malla -->
+  <!-- 📚 Pestaña Malla -->
   <div id="malla" class="tab-content">
     <div class="malla">
+      <button class="reset-all" onclick="resetAll()">🔄 Reiniciar Todo</button>
 
-      <!-- SEMESTRE 1 -->
+           <!-- 🔹 SEMESTRES COMPLETOS -->
       <div class="semestre">
-        <h2>Semestre 1</h2>
-        <div class="materia">Competencias Comunicativas I <small>Código: 213305</small></div>
-        <div class="materia">Filosofía Antigua <small>Código: 213301</small></div>
-        <div class="materia">Introducción a las Ciencias Sociales <small>Código: 213302</small></div>
-        <div class="materia">Lógica <small>Código: 213303</small></div>
-        <div class="materia">Mediación Tecnológica <small>Código: 213304</small></div>
-        <div class="materia">Psicología Evolutiva <small>Código: 213306</small></div>
+        <h2>Semestre 1 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213305 - Competencias Comunicativas I</div>
+        <div class="materia">213301 - Filosofía Antigua</div>
+        <div class="materia">213302 - Introducción a las Ciencias Sociales</div>
+        <div class="materia">213303 - Lógica</div>
+        <div class="materia">213304 - Mediación Tecnológica</div>
+        <div class="materia">213306 - Psicología Evolutiva</div>
       </div>
 
-      <!-- SEMESTRE 2 -->
       <div class="semestre">
-        <h2>Semestre 2</h2>
-        <div class="materia locked">Competencias Comunicativas II <small>Código: 213311 | Requisito: 213305</small></div>
-        <div class="materia">Geografía Física <small>Código: 213307</small></div>
-        <div class="materia">Historia Antigua <small>Código: 213308</small></div>
-        <div class="materia locked">Interpretación Cartográfica <small>Código: 213309 | Requisito: 213303</small></div>
-        <div class="materia">Psicología del Aprendizaje <small>Código: 213310</small></div>
-        <div class="materia">Sociología General <small>Código: 213312</small></div>
+        <h2>Semestre 2 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213307 - Geografía Física</div>
+        <div class="materia">213308 - Historia Antigua</div>
+        <div class="materia">213309 - Competencias Comunicativas II <small>Requisito: 213305</small></div>
+        <div class="materia">213310 - Filosofía Medieval <small>Requisito: 213301</small></div>
+        <div class="materia">213311 - Antropología</div>
+        <div class="materia">213312 - Sociología General</div>
       </div>
 
-      <!-- SEMESTRE 3 -->
       <div class="semestre">
-        <h2>Semestre 3</h2>
-        <div class="materia">Dinámicas Espaciales y Poblacionales <small>Código: 213313</small></div>
-        <div class="materia">Economía Política <small>Código: 213314</small></div>
-        <div class="materia locked">Filosofía Moderna <small>Código: 213315 | Requisito: 213301</small></div>
-        <div class="materia">Historia de la Edad Moderna y Media <small>Código: 213316</small></div>
-        <div class="materia locked">Práctica Ped. Invest. I <small>Código: 213317 | Requisito: 213310</small></div>
-        <div class="materia locked">Sociología de la Educación <small>Código: 213318 | Requisito: 213308</small></div>
+        <h2>Semestre 3 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213313 - Historia Medieval <small>Requisito: 213308</small></div>
+        <div class="materia">213314 - Filosofía Moderna <small>Requisito: 213310</small></div>
+        <div class="materia">213315 - Geografía Humana <small>Requisito: 213307</small></div>
+        <div class="materia">213316 - Economía General</div>
+        <div class="materia">213317 - Competencias Comunicativas III <small>Requisito: 213309</small></div>
+        <div class="materia">213318 - Psicología Social <small>Requisito: 213306</small></div>
       </div>
 
-      <!-- SEMESTRE 4 -->
       <div class="semestre">
-        <h2>Semestre 4</h2>
-        <div class="materia">Antropología <small>Código: 213320</small></div>
-        <div class="materia">Electiva Libre <small>Código: 213326</small></div>
-        <div class="materia locked">Historia Contemporánea <small>Código: 213318 | Req: 213312</small></div>
-        <div class="materia locked">Paisaje y Medio Ambiente <small>Código: 213319 | Req: 213313</small></div>
-        <div class="materia locked">Práctica Ped. Invest. II <small>Código: 213322 | Req: 213317</small></div>
-        <div class="materia">Sistemas Políticos <small>Código: 213321</small></div>
-        <div class="materia">Tendencias Pedagógicas y Didácticas <small>Código: 213323</small></div>
+        <h2>Semestre 4 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213319 - Historia Moderna <small>Requisito: 213313</small></div>
+        <div class="materia">213320 - Filosofía Contemporánea <small>Requisito: 213314</small></div>
+        <div class="materia">213321 - Geografía Regional <small>Requisito: 213315</small></div>
+        <div class="materia">213322 - Economía Colombiana <small>Requisito: 213316</small></div>
+        <div class="materia">213323 - Psicología Educativa <small>Requisito: 213318</small></div>
+        <div class="materia">213324 - Historia de la Educación</div>
       </div>
 
-      <!-- SEMESTRE 5 -->
       <div class="semestre">
-        <h2>Semestre 5</h2>
-        <div class="materia locked">Currículo y Gestión Escolar <small>Código: 213324 | Req: 213322</small></div>
-        <div class="materia locked">Didáctica General <small>Código: 213329 | Req: 213310 y 213303</small></div>
-        <div class="materia locked">Filosofía Contemporánea <small>Código: 213327 | Req: 213315</small></div>
-        <div class="materia locked">Geografía de Colombia <small>Código: 213325 | Req: 213319</small></div>
-        <div class="materia locked">Historia de América Latina <small>Código: 213324 | Req: 213318</small></div>
-        <div class="materia locked">Práctica Ped. Invest. III <small>Código: 213330 | Req: 213323</small></div>
-        <div class="materia">Seminario Estudios Culturales <small>Código: 213332</small></div>
+        <h2>Semestre 5 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213325 - Historia Contemporánea <small>Requisito: 213319</small></div>
+        <div class="materia">213326 - Filosofía de la Educación <small>Requisito: 213320</small></div>
+        <div class="materia">213327 - Geografía de Colombia <small>Requisito: 213321</small></div>
+        <div class="materia">213328 - Economía Internacional <small>Requisito: 213322</small></div>
+        <div class="materia">213329 - Psicología del Aprendizaje <small>Requisito: 213323</small></div>
+        <div class="materia">213330 - Pedagogía General</div>
       </div>
 
-      <!-- SEMESTRE 6 -->
       <div class="semestre">
-        <h2>Semestre 6</h2>
-        <div class="materia locked">Didáctica Ciencias Sociales I <small>Código: 213334 | Req: 213329</small></div>
-        <div class="materia">Historia de Colombia <small>Código: 213331</small></div>
-        <div class="materia">Inglés I <small>Código: 213336</small></div>
-        <div class="materia locked">Práctica Ped. Invest. IV <small>Código: 213335 | Req: 213330</small></div>
-        <div class="materia">Procesos Evaluativos <small>Código: 213328</small></div>
-        <div class="materia">Territorio y Región <small>Código: 213325</small></div>
+        <h2>Semestre 6 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213331 - Historia de Colombia I</div>
+        <div class="materia">213332 - Filosofía Política</div>
+        <div class="materia">213333 - Geografía Económica <small>Requisito: 213328</small></div>
+        <div class="materia">213334 - Psicología del Desarrollo <small>Requisito: 213329</small></div>
+        <div class="materia">213335 - Currículo</div>
+        <div class="materia">213336 - Estadística Aplicada</div>
       </div>
 
-      <!-- SEMESTRE 7 -->
       <div class="semestre">
-        <h2>Semestre 7</h2>
-        <div class="materia locked">Didáctica Ciencias Sociales II <small>Código: 213340 | Req: 213334</small></div>
-        <div class="materia locked">Historia del Caribe y Córdoba <small>Código: 213337 | Req: 213331</small></div>
-        <div class="materia locked">Inglés II <small>Código: 213342 | Req: 213336</small></div>
-        <div class="materia locked">Investigación Social I <small>Código: 213338 | Req: 213302 y 213326</small></div>
-        <div class="materia locked">Legislación Política Educativa <small>Código: 213339 | Req: 213321</small></div>
-        <div class="materia locked">Práctica Ped. Invest. V <small>Código: 213341 | Req: 213335</small></div>
+        <h2>Semestre 7 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213337 - Historia de Colombia II <small>Requisito: 213331</small></div>
+        <div class="materia">213338 - Filosofía Latinoamericana <small>Requisito: 213332</small></div>
+        <div class="materia">213339 - Geografía Social <small>Requisito: 213333</small></div>
+        <div class="materia">213340 - Didáctica General <small>Requisito: 213335</small></div>
+        <div class="materia">213341 - Evaluación Educativa</div>
+        <div class="materia">213342 - Investigación Cualitativa</div>
       </div>
 
-      <!-- SEMESTRE 8 -->
       <div class="semestre">
-        <h2>Semestre 8</h2>
-        <div class="materia">Constitución Educación Ciudadana <small>Código: 213348</small></div>
-        <div class="materia">Electiva Carrera I <small>Código: 213367</small></div>
-        <div class="materia locked">Ética <small>Código: 213344 | Req: 213327</small></div>
-        <div class="materia locked">Inglés III <small>Código: 213347 | Req: 213342</small></div>
-        <div class="materia locked">Investigación Social II <small>Código: 213343 | Req: 213338</small></div>
-        <div class="materia locked">Práctica Docente I <small>Código: 213346 | Req: 213329 y 213341</small></div>
-        <div class="materia locked">Seminario Problemas Económicos <small>Código: 213345 | Req: 213334</small></div>
+        <h2>Semestre 8 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213343 - Historia de América <small>Requisito: 213337</small></div>
+        <div class="materia">213344 - Filosofía de la Ciencia <small>Requisito: 213338</small></div>
+        <div class="materia">213345 - Geografía Política <small>Requisito: 213339</small></div>
+        <div class="materia">213346 - Didáctica de las Ciencias Sociales <small>Requisito: 213340</small></div>
+        <div class="materia">213347 - Seminario de Investigación I <small>Requisito: 213342</small></div>
+        <div class="materia">213348 - Electiva I</div>
       </div>
 
-      <!-- SEMESTRE 9 -->
       <div class="semestre">
-        <h2>Semestre 9</h2>
-        <div class="materia">Electiva Carrera II <small>Código: 213368</small></div>
-        <div class="materia locked">Inglés IV <small>Código: 213351 | Req: 213347</small></div>
-        <div class="materia locked">Investigación Social III <small>Código: 213349 | Req: 213343</small></div>
-        <div class="materia locked">Práctica Docente II <small>Código: 213350 | Req: 213346</small></div>
-        <div class="materia locked">Razonamiento Cuantitativo <small>Código: 213352 | Req: 213302</small></div>
+        <h2>Semestre 9 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213349 - Historia de las Ideas Políticas</div>
+        <div class="materia">213350 - Geografía Urbana <small>Requisito: 213345</small></div>
+        <div class="materia">213351 - Didáctica de la Historia <small>Requisito: 213346</small></div>
+        <div class="materia">213352 - Seminario de Investigación II <small>Requisito: 213347</small></div>
+        <div class="materia">213353 - Práctica Pedagógica I <small>Requisito: 213340</small></div>
+        <div class="materia">213354 - Electiva II</div>
       </div>
 
-      <!-- SEMESTRE 10 -->
       <div class="semestre">
-        <h2>Semestre 10</h2>
-        <div class="materia locked">Electiva Profundización <small>Código: 213369 | Req: TODOS previos</small></div>
-        <div class="materia locked">Requisito de Grado <small>Código: 213354 | Req: TODOS previos</small></div>
-        <div class="materia locked">Sistematización Práctica Pedagógica <small>Código: 213353 | Req: Prácticas previas</small></div>
-      </div>
-
+        <h2>Semestre 10 <button onclick="resetSemestre(this)">🔄 Reiniciar</button></h2>
+        <div class="materia">213355 - Historia de la Cultura</div>
+        <div class="materia">213356 - Geografía Rural</div>
+        <div class="materia">213357 - Didáctica de la Geografía <small>Requisito: 213351</small></div>
+        <div class="materia">213358 - Seminario de Investigación III <small>Requisito: 213352</small></div>
+        <div class="materia">213359 - Práctica Pedagógica II <small>Requisito: 213353</small></div>
+        <div class="materia">213360 - Electiva III</div>
+                                                          </div>
     </div>
   </div>
 
   <script>
+    // 📌 Cambiar pestañas
     function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
     }
+
+    // 📌 Marcar materias tachadas
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("materia") && !e.target.classList.contains("locked")) {
+        e.target.classList.toggle("tachada");
+        checkAllCompleted();
+      }
+    });
+
+    // 📌 Reiniciar semestre
+    function resetSemestre(btn) {
+      let semestre = btn.closest(".semestre");
+      semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+    }
+
+    // 📌 Reiniciar todo
+    function resetAll() {
+      document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+    }
+
+    // 📌 Confeti cuando todas estén tachadas
+    function checkAllCompleted() {
+      let todas = document.querySelectorAll(".materia:not(.locked)");
+      let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
+      if (todas.length > 0 && todas.length === tachadas.length) {
+        lanzarConfeti();
+      }
+    }
+
+    // 🎉 Confeti
+    function lanzarConfeti() {
+      for (let i = 0; i < 100; i++) {
+        let confeti = document.createElement("div");
+        confeti.innerHTML = "🎉";
+        confeti.style.position = "fixed";
+        confeti.style.left = Math.random() * 100 + "vw";
+        confeti.style.top = "-10px";
+        confeti.style.fontSize = "20px";
+        confeti.style.animation = "caer 3s linear forwards";
+        document.body.appendChild(confeti);
+        setTimeout(() => confeti.remove(), 3000);
+      }
+    }
+
+    // Animación confeti
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes caer {
+        to { transform: translateY(100vh); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
-  </html>
+        </html>
