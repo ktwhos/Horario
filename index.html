@@ -6,68 +6,50 @@
   <title>Horario - Ciencias Sociales</title>
   <style>
     body {
-      font-family: "Poppins", sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #fff5f7;
-      margin: 0;
-      padding: 20px;
       color: #333;
-    }
-
-    h1 {
       text-align: center;
-      color: #d63384;
-      margin-bottom: 20px;
     }
-
+    h1 {
+      color: #d36b8d;
+      margin: 20px;
+    }
     .schedule {
       display: grid;
-      grid-template-columns: 120px repeat(5, 1fr);
+      grid-template-columns: 100px repeat(5, 1fr);
       gap: 10px;
-      max-width: 950px;
+      max-width: 900px;
       margin: auto;
     }
-
-    .time {
-      font-weight: bold;
-      color: #555;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffe3ec;
-      border-radius: 10px;
+    .time, .day {
+      background: #ffeef5;
       padding: 10px;
+      border-radius: 10px;
+      font-weight: bold;
     }
-
     .day {
-      text-align: center;
-      font-weight: bold;
-      color: #d63384;
-      background: #ffe3ec;
-      border-radius: 10px;
-      padding: 10px;
+      background: #f8c8dc;
     }
-
     .class {
-      background: #fce1f5;
+      padding: 15px;
       border-radius: 12px;
-      padding: 8px;
-      font-size: 14px;
-      text-align: center;
+      font-weight: bold;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
-    .class strong {
-      display: block;
-      color: #b5179e;
-      margin-bottom: 4px;
-    }
+    /* Colores pastel por materia */
+    .psicologia { background-color: #F4C2C2; }   /* Blushing Bride */
+    .mediacion { background-color: #C7DDEE; }    /* Delicate Blue */
+    .sociales { background-color: #D7E3D2; }     /* Meadow Mist */
+    .comunicacion { background-color: #DCD3E7; } /* Lavender pastel */
+    .logica { background-color: #F6F2C0; }       /* Transparent Yellow */
+    .filosofia { background-color: #F8D7C4; }    /* Tender Peach */
   </style>
 </head>
 <body>
   <h1>Horario - Ciencias Sociales</h1>
-
   <div class="schedule">
-    <!-- Cabecera -->
+    <!-- Encabezados -->
     <div></div>
     <div class="day">Lunes</div>
     <div class="day">Martes</div>
@@ -80,40 +62,32 @@
     <div></div>
     <div></div>
     <div></div>
-    <div class="class"><strong>Psicología Evolutiva</strong> Bloque 29</div>
+    <div class="class psicologia">Psicología Evolutiva<br><small>Bloque 29</small></div>
     <div></div>
 
     <!-- 9-11 -->
     <div class="time">9:00 - 11:00 AM</div>
-    <div class="class"><strong>Mediación Tecnológica</strong> Bloque 14</div>
+    <div class="class mediacion">Mediación Tecnológica<br><small>Bloque 14</small></div>
     <div></div>
     <div></div>
     <div></div>
     <div></div>
 
-    <!-- 10-12 (solo miércoles) -->
+    <!-- 10-12 -->
     <div class="time">10:00 - 12:00 PM</div>
     <div></div>
     <div></div>
-    <div class="class"><strong>Mediación Tecnológica</strong> Bloque 14</div>
+    <div class="class mediacion">Mediación Tecnológica<br><small>Bloque 14</small></div>
     <div></div>
     <div></div>
 
     <!-- 12-3 -->
     <div class="time">12:00 - 3:00 PM</div>
-    <div class="class"><strong>Introducción a las Ciencias Sociales</strong> Bloque 14</div>
+    <div class="class sociales">Introducción a las Ciencias Sociales<br><small>Bloque 14</small></div>
     <div></div>
-    <div></div>
-    <div class="class"><strong>Lógica</strong> Bloque 4</div>
-    <div class="class"><strong>Filosofía Antigua</strong> Bloque 11</div>
-
-    <!-- 1-4 (detalle para miércoles y viernes) -->
-    <div class="time">1:00 - 4:00 PM</div>
-    <div></div>
-    <div></div>
-    <div class="class"><strong>Competencias Comunicativas I</strong> Bloque 4</div>
-    <div></div>
-    <div></div>
+    <div class="class comunicacion">Competencias Comunicativas I<br><small>Bloque 4</small></div>
+    <div class="class logica">Lógica<br><small>Bloque 4</small></div>
+    <div class="class filosofia">Filosofía Antigua<br><small>Bloque 11</small></div>
   </div>
 </body>
 </html>
