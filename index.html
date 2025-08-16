@@ -3,18 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horario - Ciencias Sociales</title>
+  <title>Horario y Malla</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff5f7;
-      color: #333;
+      background-color: #fff6f8;
+      margin: 0;
+      padding: 20px;
       text-align: center;
     }
+    /* pestañas */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      background: #f8d0dd;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .tab.active {
+      background: #f497b5;
+      color: white;
+    }
+    .content {
+      display: none;
+    }
+    .content.active {
+      display: block;
+    }
+    /* estilos de horario (lo que ya tenías) */
     h1 {
       color: #d36b8d;
       margin: 20px;
       font-size: 1.8em;
+      font-weight: bold;
     }
     .schedule {
       display: grid;
@@ -39,7 +66,7 @@
       font-size: 0.9em;
       font-weight: normal;
       line-height: 1.3em;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      box-shadow: 2px 5px rgba(0,0,0,0.08);
     }
     .class small {
       font-size: 0.75em;
@@ -47,57 +74,77 @@
       margin-top: 4px;
       color: #444;
     }
-    /* Colores pastel por materia */
-    .psicologia { background-color: #F4C2C2; }   /* Blushing Bride */
-    .mediacion { background-color: #C7DDEE; }    /* Delicate Blue */
-    .sociales { background-color: #D7E3D2; }     /* Meadow Mist */
-    .comunicacion { background-color: #DCD3E7; } /* Lavender pastel */
-    .logica { background-color: #F6F2C0; }       /* Transparent Yellow */
-    .filosofia { background-color: #F8D7C4; }    /* Tender Peach */
+    /* colores pastel */
+    .psicologia { background-color: #f4c2c2; }
+    .mediacion { background-color: #c7d0e6; }
+    .sociales { background-color: #d7e3d2; }
+    .comunicacion { background-color: #d3cde7; }
+    .logica { background-color: #f6f2cd; }
+    .filosofia { background-color: #fbd7c4; }
   </style>
 </head>
 <body>
-  <h1>Horario - Ciencias Sociales</h1>
-  <div class="schedule">
-    <!-- Encabezados -->
-    <div></div>
-    <div class="day">Lunes</div>
-    <div class="day">Martes</div>
-    <div class="day">Miércoles</div>
-    <div class="day">Jueves</div>
-    <div class="day">Viernes</div>
 
-    <!-- 6-9 -->
-    <div class="time">6:00 - 9:00 AM</div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div class="class psicologia">Psicología Evolutiva<small>Bloque 29, Salón 01</small></div>
-    <div></div>
+  <h1>📚 Ciencias Sociales</h1>
 
-    <!-- 9-11 -->
-    <div class="time">9:00 - 11:00 AM</div>
-    <div class="class mediacion">Mediación Tecnológica<small>Bloque 14, salón 204</small></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-
-    <!-- 10-12 -->
-    <div class="time">10:00 - 12:00 PM</div>
-    <div></div>
-    <div></div>
-    <div class="class mediacion">Mediación Tecnológica<small>Bloque 14, salón 204</small></div>
-    <div></div>
-    <div></div>
-
-    <!-- 12-3 -->
-    <div class="time">12:00 - 3:00 PM</div>
-    <div class="class sociales">Introducción a las Ciencias Sociales<small>Bloque 14, salón 204</small></div>
-    <div></div>
-    <div class="class comunicacion">Competencias Comunicativas I<small>Bloque 4, salón 03</small></div>
-    <div class="class logica">Lógica<small>Bloque 4, salon 03</small></div>
-    <div class="class filosofia">Filosofía Antigua<small>Bloque 11, salón 406</small></div>
+  <!-- pestañas -->
+  <div class="tabs">
+    <div class="tab active" onclick="openTab('horario')">Horario</div>
+    <div class="tab" onclick="openTab('malla')">Malla</div>
   </div>
+
+  <!-- contenido: horario -->
+  <div id="horario" class="content active">
+    <h2>📅 Horario</h2>
+    <div class="schedule">
+      <div></div>
+      <div class="day">Lunes</div>
+      <div class="day">Martes</div>
+      <div class="day">Miércoles</div>
+      <div class="day">Jueves</div>
+      <div class="day">Viernes</div>
+
+      <!-- 6-9 -->
+      <div class="time">6:00 - 9:00 AM</div>
+      <div></div><div></div><div></div>
+      <div class="class psicologia">Psicología Evolutiva<small>Bloque 29, Salón 01</small></div>
+      <div></div>
+
+      <!-- 9-11 -->
+      <div class="time">9:00 - 11:00 AM</div>
+      <div class="class mediacion">Mediación Tecnológica<small>Bloque 14, Salón 204</small></div>
+      <div></div><div></div><div></div><div></div>
+
+      <!-- 10-12 -->
+      <div class="time">10:00 - 12:00 PM</div>
+      <div></div><div></div>
+      <div class="class mediacion">Mediación Tecnológica<small>Bloque 14, Salón 204</small></div>
+      <div></div><div></div>
+
+      <!-- 12-3 -->
+      <div class="time">12:00 - 3:00 PM</div>
+      <div class="class sociales">Introducción a las Ciencias Sociales<small>Bloque 14, Salón 204</small></div>
+      <div></div>
+      <div class="class comunicacion">Competencias Comunicativas I<small>Bloque 4, Salón 03</small></div>
+      <div class="class logica">Lógica<small>Bloque 4, Salón 03</small></div>
+      <div class="class filosofia">Filosofía Antigua<small>Bloque 11, Salón 406</small></div>
+    </div>
+  </div>
+
+  <!-- contenido: malla -->
+  <div id="malla" class="content">
+    <h2>📖 Malla Curricular</h2>
+    <p>Aquí irá la malla de 10 semestres ✨</p>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.querySelector(`.tab[onclick="openTab('${tabId}')"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+
 </body>
 </html>
