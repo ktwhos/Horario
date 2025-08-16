@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario - Ciencias Sociales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      margin: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: 100px repeat(5, 1fr);
+      border: 2px solid #d63384;
+    }
+    .day, .time {
+      border: 1px solid #ccc;
+      padding: 8px;
+      background: #ffe6f2;
+      font-weight: bold;
+    }
+    .time {
+      background: #e0f7e9;
+    }
+    .class {
+      border: 1px solid #ccc;
+      padding: 6px;
+      margin: 2px;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #ffd6e7;
+    }
+    .class:hover {
+      background: #ffb3d9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Horario - Ciencias Sociales</h1>
+  <div class="calendar">
+    <!-- Encabezado -->
+    <div class="time"></div>
+    <div class="day">Lunes</div>
+    <div class="day">Martes</div>
+    <div class="day">Jueves</div>
+    <div class="day">Viernes</div>
+    <div class="day">Sábado</div>
+
+    <!-- 6 AM -->
+    <div class="time">6:00-9:00 AM</div>
+    <div></div>
+    <div></div>
+    <div>
+      <div class="class">
+        Lógica<br>
+        Psicología Evolutiva<br>
+        <small>Bloque 29 – 29-01</small>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+
+    <!-- 9 AM -->
+    <div class="time">9:00-11:00 AM</div>
+    <div>
+      <div class="class">
+        Mediación Tecnológica<br>
+        <small>Bloque 14 – 14-204</small>
+      </div>
+    </div>
+    <div>
+      <div class="class">
+        Mediación Tecnológica<br>
+        <small>Bloque 14 – 14-204</small>
+      </div>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <!-- 12 PM -->
+    <div class="time">12:00-3:00 PM</div>
+    <div>
+      <div class="class">
+        Introducción a las Ciencias Sociales<br>
+        <small>Bloque 14 – 14-306</small>
+      </div>
+    </div>
+    <div></div>
+    <div>
+      <div class="class">
+        Filosofía Antigua<br>
+        <small>Bloque 4 – 4-02</small>
+      </div>
+      <div class="class">
+        Competencias Comunicativas I<br>
+        <small>Bloque 4 – 4-03</small>
+      </div>
+    </div>
+    <div>
+      <div class="class">
+        Introducción a las Ciencias Sociales<br>
+        <small>Bloque 11 – 11-406</small>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</body>
+  </html>
