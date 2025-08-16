@@ -14,28 +14,38 @@
     h1 {
       color: #d36b8d;
       margin: 20px;
+      font-size: 1.8em;
     }
     .schedule {
       display: grid;
       grid-template-columns: 100px repeat(5, 1fr);
-      gap: 10px;
+      gap: 8px;
       max-width: 900px;
       margin: auto;
     }
     .time, .day {
       background: #ffeef5;
-      padding: 10px;
-      border-radius: 10px;
+      padding: 6px;
+      border-radius: 8px;
+      font-size: 0.85em;
       font-weight: bold;
     }
     .day {
       background: #f8c8dc;
     }
     .class {
-      padding: 15px;
-      border-radius: 12px;
-      font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      font-weight: normal;
+      line-height: 1.3em;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+    .class small {
+      font-size: 0.75em;
+      display: block;
+      margin-top: 4px;
+      color: #444;
     }
     /* Colores pastel por materia */
     .psicologia { background-color: #F4C2C2; }   /* Blushing Bride */
@@ -62,12 +72,12 @@
     <div></div>
     <div></div>
     <div></div>
-    <div class="class psicologia">Psicología Evolutiva<br><small>Bloque 29</small></div>
+    <div class="class psicologia">Psicología Evolutiva<small>Bloque 29</small></div>
     <div></div>
 
     <!-- 9-11 -->
     <div class="time">9:00 - 11:00 AM</div>
-    <div class="class mediacion">Mediación Tecnológica<br><small>Bloque 14</small></div>
+    <div class="class mediacion">Mediación Tecnológica<small>Bloque 14</small></div>
     <div></div>
     <div></div>
     <div></div>
@@ -77,17 +87,17 @@
     <div class="time">10:00 - 12:00 PM</div>
     <div></div>
     <div></div>
-    <div class="class mediacion">Mediación Tecnológica<br><small>Bloque 14</small></div>
+    <div class="class mediacion">Mediación Tecnológica<small>Bloque 14</small></div>
     <div></div>
     <div></div>
 
     <!-- 12-3 -->
     <div class="time">12:00 - 3:00 PM</div>
-    <div class="class sociales">Introducción a las Ciencias Sociales<br><small>Bloque 14</small></div>
+    <div class="class sociales">Introducción a las Ciencias Sociales<small>Bloque 14</small></div>
     <div></div>
-    <div class="class comunicacion">Competencias Comunicativas I<br><small>Bloque 4</small></div>
-    <div class="class logica">Lógica<br><small>Bloque 4</small></div>
-    <div class="class filosofia">Filosofía Antigua<br><small>Bloque 11</small></div>
+    <div class="class comunicacion">Competencias Comunicativas I<small>Bloque 4</small></div>
+    <div class="class logica">Lógica<small>Bloque 4</small></div>
+    <div class="class filosofia">Filosofía Antigua<small>Bloque 11</small></div>
   </div>
 </body>
 </html>
