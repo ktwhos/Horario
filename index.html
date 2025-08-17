@@ -308,7 +308,7 @@
 <div class="semestre">
   <h2>Semestre 10</h2>
   <div class="materia locked" data-codigo="213369" data-requisito="all">Electiva Profundización <small>Código: 213369 | Requisito: TODOS previos</small></div>
-  <d<script>
+  <script>
   // 📌 Cambiar pestañas
   function openTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -403,9 +403,6 @@
     actualizarRequisitos();
     guardarProgreso();
   }
-    }
-  `;
-  document.head.appendChild(style);
 
   // 📌 Al cargar la página, restaurar progreso
   window.onload = function() {
