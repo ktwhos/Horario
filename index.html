@@ -117,10 +117,12 @@
       border-left: 5px solid #d36b8d;
       background: #fff;
       border-radius: 5px;
+      cursor: pointer;
     }
 
     .materia.locked {
       opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .materia small {
@@ -129,7 +131,7 @@
       color: #666;
     }
   
-        /* 🔥 Tachado */
+    /* 🔥 Tachado */
     .materia.tachada {
       text-decoration: line-through;
       color: #777;
@@ -148,10 +150,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-  </style>
-</head>
-<body>
-  <h1>Ciencias Sociales</h1>
   </style>
 </head>
 <body>
@@ -205,180 +203,219 @@
   <div id="malla" class="tab-content">
     <div class="malla">
      <button class="reset-all" onclick="resetAll()"> Reiniciar Todo</button>
-      
-      <!-- SEMESTRE 1 -->
-      <div class="semestre">
-        <h2>Semestre 1</h2>
-        <div class="materia">Competencias Comunicativas I <small>Código: 213305</small></div>
-        <div class="materia">Filosofía Antigua <small>Código: 213301</small></div>
-        <div class="materia">Introducción a las Ciencias Sociales <small>Código: 213302</small></div>
-        <div class="materia">Lógica <small>Código: 213303</small></div>
-        <div class="materia">Mediación Tecnológica <small>Código: 213304</small></div>
-        <div class="materia">Psicología Evolutiva <small>Código: 213306</small></div>
-      </div>
-
-      <!-- SEMESTRE 2 -->
-      <div class="semestre">
-        <h2>Semestre 2</h2>
-        <div class="materia locked">Competencias Comunicativas II <small>Código: 213311 | Requisito: 213305</small></div>
-        <div class="materia">Geografía Física <small>Código: 213307</small></div>
-        <div class="materia">Historia Antigua <small>Código: 213308</small></div>
-        <div class="materia locked" data-codigo="213309" data-requisito="213303"> Interpretación Cartográfica<br><small>Código: 213309 | Requisito: 213303</small>
+<!-- SEMESTRE 1 -->
+<div class="semestre">
+  <h2>Semestre 1</h2>
+  <div class="materia" data-codigo="213305">Competencias Comunicativas I <small>Código: 213305</small></div>
+  <div class="materia" data-codigo="213301">Filosofía Antigua <small>Código: 213301</small></div>
+  <div class="materia" data-codigo="213302">Introducción a las Ciencias Sociales <small>Código: 213302</small></div>
+  <div class="materia" data-codigo="213303">Lógica <small>Código: 213303</small></div>
+  <div class="materia" data-codigo="213304">Mediación Tecnológica <small>Código: 213304</small></div>
+  <div class="materia" data-codigo="213306">Psicología Evolutiva <small>Código: 213306</small></div>
 </div>
-        <div class="materia">Psicología del Aprendizaje <small>Código: 213310</small></div>
-        <div class="materia">Sociología General <small>Código: 213312</small></div>
-      </div>
 
-      <!-- SEMESTRE 3 -->
-      <div class="semestre">
-        <h2>Semestre 3</h2>
-        <div class="materia">Dinámicas Espaciales y Poblacionales <small>Código: 213313</small></div>
-        <div class="materia">Economía Política <small>Código: 213314</small></div>
-        <div class="materia locked">Filosofía Moderna <small>Código: 213315 | Requisito: 213301</small></div>
-        <div class="materia">Historia de la Edad Moderna y Media <small>Código: 213316</small></div>
-        <div class="materia locked">Práctica Ped. Invest. I <small>Código: 213317 | Requisito: 213310</small></div>
-        <div class="materia locked">Sociología de la Educación <small>Código: 213318 | Requisito: 213308</small></div>
-      </div>
+<!-- SEMESTRE 2 -->
+<div class="semestre">
+  <h2>Semestre 2</h2>
+  <div class="materia locked" data-codigo="213311" data-requisito="213305">Competencias Comunicativas II <small>Código: 213311 | Requisito: 213305</small></div>
+  <div class="materia" data-codigo="213307">Geografía Física <small>Código: 213307</small></div>
+  <div class="materia" data-codigo="213308">Historia Antigua <small>Código: 213308</small></div>
+  <div class="materia locked" data-codigo="213309" data-requisito="213303">Interpretación Cartográfica <small>Código: 213309 | Requisito: 213303</small></div>
+  <div class="materia" data-codigo="213310">Psicología del Aprendizaje <small>Código: 213310</small></div>
+  <div class="materia" data-codigo="213312">Sociología General <small>Código: 213312</small></div>
+</div>
 
-      <!-- SEMESTRE 4 -->
-      <div class="semestre">
-        <h2>Semestre 4</h2>
-        <div class="materia">Antropología <small>Código: 213320</small></div>
-        <div class="materia">Electiva Libre <small>Código: 213326</small></div>
-        <div class="materia locked">Historia Contemporánea <small>Código: 213318 | Req: 213312</small></div>
-        <div class="materia locked">Paisaje y Medio Ambiente <small>Código: 213319 | Req: 213313</small></div>
-        <div class="materia locked">Práctica Ped. Invest. II <small>Código: 213322 | Req: 213317</small></div>
-        <div class="materia">Sistemas Políticos <small>Código: 213321</small></div>
-        <div class="materia">Tendencias Pedagógicas y Didácticas <small>Código: 213323</small></div>
-      </div>
+<!-- SEMESTRE 3 -->
+<div class="semestre">
+  <h2>Semestre 3</h2>
+  <div class="materia" data-codigo="213313">Dinámicas Espaciales y Poblacionales <small>Código: 213313</small></div>
+  <div class="materia" data-codigo="213314">Economía Política <small>Código: 213314</small></div>
+  <div class="materia locked" data-codigo="213315" data-requisito="213301">Filosofía Moderna <small>Código: 213315 | Requisito: 213301</small></div>
+  <div class="materia" data-codigo="213316">Historia de la Edad Moderna y Media <small>Código: 213316</small></div>
+  <div class="materia locked" data-codigo="213317" data-requisito="213310">Práctica Ped. Invest. I <small>Código: 213317 | Requisito: 213310</small></div>
+  <div class="materia locked" data-codigo="213318" data-requisito="213308">Sociología de la Educación <small>Código: 213318 | Requisito: 213308</small></div>
+</div>
 
-      <!-- SEMESTRE 5 -->
-      <div class="semestre">
-        <h2>Semestre 5</h2>
-        <div class="materia locked">Currículo y Gestión Escolar <small>Código: 213324 | Req: 213322</small></div>
-        <div class="materia locked">Didáctica General <small>Código: 213329 | Req: 213310 y 213303</small></div>
-        <div class="materia locked">Filosofía Contemporánea <small>Código: 213327 | Req: 213315</small></div>
-        <div class="materia locked">Geografía de Colombia <small>Código: 213325 | Req: 213319</small></div>
-        <div class="materia locked">Historia de América Latina <small>Código: 213324 | Req: 213318</small></div>
-        <div class="materia locked">Práctica Ped. Invest. III <small>Código: 213330 | Req: 213323</small></div>
-        <div class="materia">Seminario Estudios Culturales <small>Código: 213332</small></div>
-      </div>
+<!-- SEMESTRE 4 -->
+<div class="semestre">
+  <h2>Semestre 4</h2>
+  <div class="materia" data-codigo="213320">Antropología <small>Código: 213320</small></div>
+  <div class="materia" data-codigo="213326">Electiva Libre <small>Código: 213326</small></div>
+  <div class="materia locked" data-codigo="213318" data-requisito="213312">Historia Contemporánea <small>Código: 213318 | Requisito: 213312</small></div>
+  <div class="materia locked" data-codigo="213319" data-requisito="213313">Paisaje y Medio Ambiente <small>Código: 213319 | Requisito: 213313</small></div>
+  <div class="materia locked" data-codigo="213322" data-requisito="213317">Práctica Ped. Invest. II <small>Código: 213322 | Requisito: 213317</small></div>
+  <div class="materia" data-codigo="213321">Sistemas Políticos <small>Código: 213321</small></div>
+  <div class="materia" data-codigo="213323">Tendencias Pedagógicas y Didácticas <small>Código: 213323</small></div>
+</div>
 
-      <!-- SEMESTRE 6 -->
-      <div class="semestre">
-        <h2>Semestre 6</h2>
-        <div class="materia locked">Didáctica Ciencias Sociales I <small>Código: 213334 | Req: 213329</small></div>
-        <div class="materia">Historia de Colombia <small>Código: 213331</small></div>
-        <div class="materia">Inglés I <small>Código: 213336</small></div>
-        <div class="materia locked">Práctica Ped. Invest. IV <small>Código: 213335 | Req: 213330</small></div>
-        <div class="materia">Procesos Evaluativos <small>Código: 213328</small></div>
-        <div class="materia">Territorio y Región <small>Código: 213325</small></div>
-      </div>
+<!-- SEMESTRE 5 -->
+<div class="semestre">
+  <h2>Semestre 5</h2>
+  <div class="materia locked" data-codigo="213324" data-requisito="213322">Currículo y Gestión Escolar <small>Código: 213324 | Requisito: 213322</small></div>
+  <div class="materia locked" data-codigo="213329" data-requisito="213310,213303">Didáctica General <small>Código: 213329 | Requisito: 213310 y 213303</small></div>
+  <div class="materia locked" data-codigo="213327" data-requisito="213315">Filosofía Contemporánea <small>Código: 213327 | Requisito: 213315</small></div>
+  <div class="materia locked" data-codigo="213325" data-requisito="213319">Geografía de Colombia <small>Código: 213325 | Requisito: 213319</small></div>
+  <div class="materia locked" data-codigo="213324" data-requisito="213318">Historia de América Latina <small>Código: 213324 | Requisito: 213318</small></div>
+  <div class="materia locked" data-codigo="213330" data-requisito="213323">Práctica Ped. Invest. III <small>Código: 213330 | Requisito: 213323</small></div>
+  <div class="materia" data-codigo="213332">Seminario Estudios Culturales <small>Código: 213332</small></div>
+</div>
 
-      <!-- SEMESTRE 7 -->
-      <div class="semestre">
-        <h2>Semestre 7</h2>
-        <div class="materia locked">Didáctica Ciencias Sociales II <small>Código: 213340 | Req: 213334</small></div>
-        <div class="materia locked">Historia del Caribe y Córdoba <small>Código: 213337 | Req: 213331</small></div>
-        <div class="materia locked">Inglés II <small>Código: 213342 | Req: 213336</small></div>
-        <div class="materia locked">Investigación Social I <small>Código: 213338 | Req: 213302 y 213326</small></div>
-        <div class="materia locked">Legislación Política Educativa <small>Código: 213339 | Req: 213321</small></div>
-        <div class="materia locked">Práctica Ped. Invest. V <small>Código: 213341 | Req: 213335</small></div>
-      </div>
+<!-- SEMESTRE 6 -->
+<div class="semestre">
+  <h2>Semestre 6</h2>
+  <div class="materia locked" data-codigo="213334" data-requisito="213329">Didáctica Ciencias Sociales I <small>Código: 213334 | Requisito: 213329</small></div>
+  <div class="materia" data-codigo="213331">Historia de Colombia <small>Código: 213331</small></div>
+  <div class="materia" data-codigo="213336">Inglés I <small>Código: 213336</small></div>
+  <div class="materia locked" data-codigo="213335" data-requisito="213330">Práctica Ped. Invest. IV <small>Código: 213335 | Requisito: 213330</small></div>
+  <div class="materia" data-codigo="213328">Procesos Evaluativos <small>Código: 213328</small></div>
+  <div class="materia" data-codigo="213325">Territorio y Región <small>Código: 213325</small></div>
+</div>
 
-      <!-- SEMESTRE 8 -->
-      <div class="semestre">
-        <h2>Semestre 8</h2>
-        <div class="materia">Constitución Educación Ciudadana <small>Código: 213348</small></div>
-        <div class="materia">Electiva Carrera I <small>Código: 213367</small></div>
-        <div class="materia locked">Ética <small>Código: 213344 | Req: 213327</small></div>
-        <div class="materia locked">Inglés III <small>Código: 213347 | Req: 213342</small></div>
-        <div class="materia locked">Investigación Social II <small>Código: 213343 | Req: 213338</small></div>
-        <div class="materia locked">Práctica Docente I <small>Código: 213346 | Req: 213329 y 213341</small></div>
-        <div class="materia locked">Seminario Problemas Económicos <small>Código: 213345 | Req: 213334</small></div>
-      </div>
+<!-- SEMESTRE 7 -->
+<div class="semestre">
+  <h2>Semestre 7</h2>
+  <div class="materia locked" data-codigo="213340" data-requisito="213334">Didáctica Ciencias Sociales II <small>Código: 213340 | Requisito: 213334</small></div>
+  <div class="materia locked" data-codigo="213337" data-requisito="213331">Historia del Caribe y Córdoba <small>Código: 213337 | Requisito: 213331</small></div>
+  <div class="materia locked" data-codigo="213342" data-requisito="213336">Inglés II <small>Código: 213342 | Requisito: 213336</small></div>
+  <div class="materia locked" data-codigo="213338" data-requisito="213302,213326">Investigación Social I <small>Código: 213338 | Requisito: 213302 y 213326</small></div>
+  <div class="materia locked" data-codigo="213339" data-requisito="213321">Legislación Política Educativa <small>Código: 213339 | Requisito: 213321</small></div>
+  <div class="materia locked" data-codigo="213341" data-requisito="213335">Práctica Ped. Invest. V <small>Código: 213341 | Requisito: 213335</small></div>
+</div>
 
-      <!-- SEMESTRE 9 -->
-      <div class="semestre">
-        <h2>Semestre 9</h2>
-        <div class="materia">Electiva Carrera II <small>Código: 213368</small></div>
-        <div class="materia locked">Inglés IV <small>Código: 213351 | Req: 213347</small></div>
-        <div class="materia locked">Investigación Social III <small>Código: 213349 | Req: 213343</small></div>
-        <div class="materia locked">Práctica Docente II <small>Código: 213350 | Req: 213346</small></div>
-        <div class="materia locked">Razonamiento Cuantitativo <small>Código: 213352 | Req: 213302</small></div>
-      </div>
+<!-- SEMESTRE 8 -->
+<div class="semestre">
+  <h2>Semestre 8</h2>
+  <div class="materia" data-codigo="213348">Constitución Educación Ciudadana <small>Código: 213348</small></div>
+  <div class="materia" data-codigo="213367">Electiva Carrera I <small>Código: 213367</small></div>
+  <div class="materia locked" data-codigo="213344" data-requisito="213327">Ética <small>Código: 213344 | Requisito: 213327</small></div>
+  <div class="materia locked" data-codigo="213347" data-requisito="213342">Inglés III <small>Código: 213347 | Requisito: 213342</small></div>
+  <div class="materia locked" data-codigo="213343" data-requisito="213338">Investigación Social II <small>Código: 213343 | Requisito: 213338</small></div>
+  <div class="materia locked" data-codigo="213346" data-requisito="213329,213341">Práctica Docente I <small>Código: 213346 | Requisito: 213329 y 213341</small></div>
+  <div class="materia locked" data-codigo="213345" data-requisito="213334">Seminario Problemas Económicos <small>Código: 213345 | Requisito: 213334</small></div>
+</div>
 
-      <!-- SEMESTRE 10 -->
-      <div class="semestre">
-        <h2>Semestre 10</h2>
-        <div class="materia locked">Electiva Profundización <small>Código: 213369 | Req: TODOS previos</small></div>
-        <div class="materia locked">Requisito de Grado <small>Código: 213354 | Req: TODOS previos</small></div>
-        <div class="materia locked">Sistematización Práctica Pedagógica <small>Código: 213353 | Req: Prácticas previas</small></div>
-      </div>
+<!-- SEMESTRE 9 -->
+<div class="semestre">
+  <h2>Semestre 9</h2>
+  <div class="materia" data-codigo="213368">Electiva Carrera II <small>Código: 213368</small></div>
+  <div class="materia locked" data-codigo="213351" data-requisito="213347">Inglés IV <small>Código: 213351 | Requisito: 213347</small></div>
+  <div class="materia locked" data-codigo="213349" data-requisito="213343">Investigación Social III <small>Código: 213349 | Requisito: 213343</small></div>
+  <div class="materia locked" data-codigo="213350" data-requisito="213346">Práctica Docente II <small>Código: 213350 | Requisito: 213346</small></div>
+  <div class="materia locked" data-codigo="213352" data-requisito="213302">Razonamiento Cuantitativo <small>Código: 213352 | Requisito: 213302</small></div>
+</div>
+
+<!-- SEMESTRE 10 -->
+<div class="semestre">
+  <h2>Semestre 10</h2>
+  <div class="materia locked" data-codigo="213369" data-requisito="all">Electiva Profundización <small>Código: 213369 | Requisito: TODOS previos</small></div>
+  <div class="materia locked" data-codigo="213354" data-requisito="all">Requisito de Grado <small>Código: 213354 | Requisito: TODOS previos</small></div>
+  <div class="materia locked" data-codigo="213353" data-requisito="practicas">Sistematización Práctica Pedagógica <small>Código: 213353 | Requisito: Prácticas previas</small></div>
+    </div>
 
     </div>
   </div>
 
     <script>
-    // 📌 Cambiar pestañas
-    function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
+  // 📌 Cambiar pestañas
+  function openTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
 
-    // 📌 Marcar materias tachadas
-    document.addEventListener("click", function(e) {
-      if (e.target.classList.contains("materia") && !e.target.classList.contains("locked")) {
-        e.target.classList.toggle("tachada");
-        checkAllCompleted();
+  // 📌 Desbloquear materias cuando se cumple el requisito
+  function actualizarRequisitos() {
+    document.querySelectorAll(".materia.locked").forEach(materia => {
+      let req = materia.dataset.requisito;
+      if (!req) return;
+
+      if (req === "all") {
+        // ✅ Caso especial: necesita que todas las materias estén tachadas
+        let todas = document.querySelectorAll(".materia:not(.locked)");
+        let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
+        if (todas.length > 0 && todas.length === tachadas.length) {
+          materia.classList.remove("locked");
+        }
+      } 
+      else if (req === "practicas") {
+        // ✅ Caso especial: requiere todas las prácticas
+        let practicas = ["213317","213322","213330","213335","213341"];
+        let cumplidas = practicas.every(cod =>
+          document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
+        );
+        if (cumplidas) {
+          materia.classList.remove("locked");
+        }
+      } 
+      else {
+        // ✅ Caso normal: uno o varios códigos de materias
+        let requisitos = req.split(",");
+        let cumplidos = requisitos.every(cod =>
+          document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
+        );
+        if (cumplidos) {
+          materia.classList.remove("locked");
+        }
       }
     });
+  }
 
-    // 📌 Reiniciar semestre
-    function resetSemestre(btn) {
-      let semestre = btn.closest(".semestre");
-      semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+  // 📌 Marcar materias tachadas y verificar desbloqueos
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("materia") && !e.target.classList.contains("locked")) {
+      e.target.classList.toggle("tachada");
+      actualizarRequisitos(); 
+      checkAllCompleted();
     }
+  });
 
-    // 📌 Reiniciar todo
-    function resetAll() {
-      document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+  // 📌 Reiniciar semestre
+  function resetSemestre(btn) {
+    let semestre = btn.closest(".semestre");
+    semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+    actualizarRequisitos();
+  }
+
+  // 📌 Reiniciar todo
+  function resetAll() {
+    document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+    document.querySelectorAll(".materia.locked").forEach(m => m.classList.add("locked"));
+    actualizarRequisitos();
+  }
+
+  // 📌 Confeti cuando todas estén tachadas
+  function checkAllCompleted() {
+    let todas = document.querySelectorAll(".materia:not(.locked)");
+    let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
+    if (todas.length > 0 && todas.length === tachadas.length) {
+      lanzarConfeti();
     }
+  }
 
-    // 📌 Confeti cuando todas estén tachadas
-    function checkAllCompleted() {
-      let todas = document.querySelectorAll(".materia:not(.locked)");
-      let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
-      if (todas.length > 0 && todas.length === tachadas.length) {
-        lanzarConfeti();
-      }
+  // 🎉 Confeti
+  function lanzarConfeti() {
+    for (let i = 0; i < 100; i++) {
+      let confeti = document.createElement("div");
+      confeti.innerHTML = "🎉";
+      confeti.style.position = "fixed";
+      confeti.style.left = Math.random() * 100 + "vw";
+      confeti.style.top = "-10px";
+      confeti.style.fontSize = "20px";
+      confeti.style.animation = "caer 3s linear forwards";
+      document.body.appendChild(confeti);
+      setTimeout(() => confeti.remove(), 3000);
     }
+  }
 
-    // 🎉 Confeti
-    function lanzarConfeti() {
-      for (let i = 0; i < 100; i++) {
-        let confeti = document.createElement("div");
-        confeti.innerHTML = "🎉";
-        confeti.style.position = "fixed";
-        confeti.style.left = Math.random() * 100 + "vw";
-        confeti.style.top = "-10px";
-        confeti.style.fontSize = "20px";
-        confeti.style.animation = "caer 3s linear forwards";
-        document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 3000);
-      }
+  // Animación confeti
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes caer {
+      to { transform: translateY(100vh); opacity: 0; }
     }
-
-    // Animación confeti
-    const style = document.createElement("style");
-    style.innerHTML = `
-      @keyframes caer {
-        to { transform: translateY(100vh); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+  `;
+  document.head.appendChild(style);
+    </script>
 </body>
 </html>
