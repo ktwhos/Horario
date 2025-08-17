@@ -308,14 +308,7 @@
 <div class="semestre">
   <h2>Semestre 10</h2>
   <div class="materia locked" data-codigo="213369" data-requisito="all">Electiva Profundización <small>Código: 213369 | Requisito: TODOS previos</small></div>
-  <div class="materia locked" data-codigo="213354" data-requisito="all">Requisito de Grado <small>Código: 213354 | Requisito: TODOS previos</small></div>
-  <div class="materia locked" data-codigo="213353" data-requisito="practicas">Sistematización Práctica Pedagógica <small>Código: 213353 | Requisito: Prácticas previas</small></div>
-    </div>
-
-    </div>
-  </div>
-
-    <script>
+  <d<script>
   // 📌 Cambiar pestañas
   function openTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -331,7 +324,6 @@
       if (!req) return;
 
       if (req === "all") {
-        // ✅ Caso especial: necesita que todas las materias estén tachadas
         let todas = document.querySelectorAll(".materia:not(.locked)");
         let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
         if (todas.length > 0 && todas.length === tachadas.length) {
@@ -339,7 +331,6 @@
         }
       } 
       else if (req === "practicas") {
-        // ✅ Caso especial: requiere todas las prácticas
         let practicas = ["213317","213322","213330","213335","213341"];
         let cumplidas = practicas.every(cod =>
           document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
@@ -349,7 +340,6 @@
         }
       } 
       else {
-        // ✅ Caso normal: uno o varios códigos de materias
         let requisitos = req.split(",");
         let cumplidos = requisitos.every(cod =>
           document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
@@ -359,6 +349,7 @@
         }
       }
     });
+    guardarProgreso();
   }
 
   // 📌 Marcar materias tachadas y verificar desbloqueos
@@ -370,11 +361,39 @@
     }
   });
 
+  // 📌 Guardar progreso en localStorage
+  function guardarProgreso() {
+    let progreso = {};
+    document.querySelectorAll(".materia").forEach(m => {
+      let codigo = m.dataset.codigo;
+      progreso[codigo] = {
+        tachada: m.classList.contains("tachada"),
+        locked: m.classList.contains("locked")
+      };
+    });
+    localStorage.setItem("progresoMalla", JSON.stringify(progreso));
+  }
+
+  // 📌 Cargar progreso
+  function cargarProgreso() {
+    let progreso = JSON.parse(localStorage.getItem("progresoMalla"));
+    if (!progreso) return;
+    document.querySelectorAll(".materia").forEach(m => {
+      let codigo = m.dataset.codigo;
+      if (progreso[codigo]) {
+        if (progreso[codigo].tachada) m.classList.add("tachada");
+        if (progreso[codigo].locked) m.classList.add("locked");
+        else m.classList.remove("locked");
+      }
+    });
+  }
+
   // 📌 Reiniciar semestre
   function resetSemestre(btn) {
     let semestre = btn.closest(".semestre");
     semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
     actualizarRequisitos();
+    guardarProgreso();
   }
 
   // 📌 Reiniciar todo
@@ -382,40 +401,17 @@
     document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
     document.querySelectorAll(".materia.locked").forEach(m => m.classList.add("locked"));
     actualizarRequisitos();
+    guardarProgreso();
   }
-
-  // 📌 Confeti cuando todas estén tachadas
-  function checkAllCompleted() {
-    let todas = document.querySelectorAll(".materia:not(.locked)");
-    let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
-    if (todas.length > 0 && todas.length === tachadas.length) {
-      lanzarConfeti();
-    }
-  }
-
-  // 🎉 Confeti
-  function lanzarConfeti() {
-    for (let i = 0; i < 100; i++) {
-      let confeti = document.createElement("div");
-      confeti.innerHTML = "🎉";
-      confeti.style.position = "fixed";
-      confeti.style.left = Math.random() * 100 + "vw";
-      confeti.style.top = "-10px";
-      confeti.style.fontSize = "20px";
-      confeti.style.animation = "caer 3s linear forwards";
-      document.body.appendChild(confeti);
-      setTimeout(() => confeti.remove(), 3000);
-    }
-  }
-
-  // Animación confeti
-  const style = document.createElement("style");
-  style.innerHTML = `
-    @keyframes caer {
-      to { transform: translateY(100vh); opacity: 0; }
     }
   `;
   document.head.appendChild(style);
+
+  // 📌 Al cargar la página, restaurar progreso
+  window.onload = function() {
+    cargarProgreso();
+    actualizarRequisitos();
+  };
     </script>
 </body>
 </html>
