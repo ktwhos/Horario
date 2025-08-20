@@ -148,53 +148,65 @@ time, .day {
   font-weight: bold;  
 }
 
-  </style>  
-</head>  
-<body>  
-  <h1>Ciencias Sociales</h1>  
-  <!-- Botones pestañas --> 
-  <div class="tabs">  
-  <button class="tab-button active" onclick="openTab('horario')">Horario</button>  
-  <button class="tab-button" onclick="openTab('malla')">Malla Curricular</button>  
-  </div> 
-  <!-- Pestaña Horario --> 
-  <div id="horario" class="tab-content active">
-  <div class="schedule">  
-      <!-- Encabezados -->  
-      <div></div>  
-      <div class="day">Lunes</div>  
-      <div class="day">Martes</div>  
-      <div class="day">Miércoles</div>  
-      <div class="day">Jueves</div>  
-      <div class="day">Viernes</div> 
-  <!-- 6-9 -->  
-  <div class="time">6:00 - 9:00 AM</div>  
-  <div></div><div></div><div></div>  
-  <div class="class psicologia">Psicología Evolutiva <small>Bloque 29, Salón 01</small></div>  
-  <div></div>  
+  <div class="schedule">
+  <!-- Encabezados -->
+  <div></div>
+  <div class="day">Lunes</div>
+  <div class="day">Martes</div>
+  <div class="day">Miércoles</div>
+  <div class="day">Jueves</div>
+  <div class="day">Viernes</div>
 
-  <!-- 9-11 -->  
-  <div class="time">9:00 - 11:00 AM</div>  
-  <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>  
-  <div></div><div></div><div></div><div></div>  
+  <!-- HORAS de 6am a 5pm -->
+  <div class="time">6 AM</div>
+  <div></div><div></div><div></div>
+  <div class="class psicologia" style="grid-column:5; grid-row:2/5;">
+    Psicología Evolutiva 
+    <small>Bloque 29, Salón 01<br>6–9 AM</small>
+  </div>
+  <div></div>
 
-  <!-- 10-12 -->  
-  <div class="time">10:00 - 12:00 PM</div>  
-  <div></div><div></div>  
-  <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>  
-  <div></div><div></div>  
+  <div class="time">7 AM</div><div></div><div></div><div></div><div></div><div></div>
+  <div class="time">8 AM</div><div></div><div></div><div></div><div></div><div></div>
 
-  <!-- 12-3 -->  
-  <div class="time">12:00 - 3:00 PM</div>  
-  <div class="class sociales">Introducción a las Ciencias Sociales <small>Bloque 14, Salón 204</small></div>  
-  <div></div>  
+  <div class="time">9 AM</div>
+  <div class="class mediacion" style="grid-column:2; grid-row:5/7;">
+    Mediación Tecnológica 
+    <small>Bloque 14, Salón 204<br>9–11 AM</small>
+  </div>
+  <div></div><div></div><div></div><div></div>
 
-  <!-- 1-4 -->  
-  <div class="time">1:00 - 4:00 PM</div>  
-  <div class="class comunicacion">Competencias Comunicativas I <small>Bloque 4, Salón 03</small></div>  
-  <div class="class logica">Lógica <small>Bloque 4, Salón 03</small></div>  
-  <div class="class filosofia">Filosofía Antigua <small>Bloque 11, Salón 406</small></div></div>
+  <div class="time">10 AM</div><div></div><div></div><div></div><div></div><div></div>
+  <div class="time">11 AM</div><div></div><div></div><div></div><div></div><div></div>
 
+  <div class="time">12 PM</div>
+  <div class="class sociales" style="grid-column:2; grid-row:8/11;">
+    Introducción a las Ciencias Sociales
+    <small>Bloque 14, Salón 204<br>12–3 PM</small>
+  </div>
+  <div></div><div></div><div></div><div></div>
+
+  <div class="time">1 PM</div><div></div><div></div><div></div><div></div><div></div>
+  <div class="time">2 PM</div><div></div><div></div><div></div><div></div><div></div>
+  <div class="time">3 PM</div><div></div><div></div><div></div><div></div><div></div>
+
+  <div class="time">4 PM</div>
+  <div class="class comunicacion" style="grid-column:3; grid-row:13/16;">
+    Competencias Comunicativas I 
+    <small>Bloque 4, Salón 03<br>1–4 PM</small>
+  </div>
+  <div class="class logica" style="grid-column:4; grid-row:13/16;">
+    Lógica 
+    <small>Bloque 4, Salón 03<br>1–4 PM</small>
+  </div>
+  <div class="class filosofia" style="grid-column:5; grid-row:13/16;">
+    Filosofía Antigua 
+    <small>Bloque 11, Salón 406<br>1–4 PM</small>
+  </div>
+  <div></div>
+
+  <div class="time">5 PM</div><div></div><div></div><div></div><div></div><div></div>
+  </div>
   </div> 
   <!-- Pestaña Malla -->  
   <div id="malla" class="tab-content">  
