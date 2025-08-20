@@ -2,7 +2,7 @@
 <head>  
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Horario y Malla - Ciencias Sociales</title>  
+  <title>Malla - Ciencias Sociales</title>  
   <style>  
     body {  
       font-family: Arial, sans-serif;  
@@ -14,14 +14,6 @@
   margin: 20px;  
   font-size: 1.8em;  
   font-weight: bold;  
-}  
-
-/* Botones pestañas */  
-.tabs {  
-  display: flex;  
-  justify-content: center;  
-  gap: 10px;  
-  margin-bottom: 20px;  
 }  
 
 .tab-button {  
@@ -45,46 +37,6 @@
 .tab-content.active {  
   display: block;  
 }  
-
-/* 🎨 Estilo del horario */  
-.schedule {  
-  display: grid;  
-  grid-template-columns: 100px repeat(5, 1fr);  
-  gap: 8px;  
-  max-width: 900px;  
-  margin: auto;  
-}  
-
-time, .day {  
-  background: #ffeef5;  
-  padding: 6px;  
-  border-radius: 8px;  
-  font-size: 0.85em;  
-  font-weight: bold;  
-}  
-
-.class {  
-  padding: 10px;  
-  border-radius: 10px;  
-  font-size: 0.9em;  
-  line-height: 1.5em;  
-  box-shadow: 0 2px 5px rgba(0,0,0,0.08);  
-}  
-
-.class small {  
-  font-size: 0.7em;  
-  display: block;  
-  margin-top: 4px;  
-  color: #444;  
-}  
-
-/* Colores pastel */  
-.psicologia { background-color: #F4C2C2; }  
-.mediacion { background-color: #C7E0DE; }  
-.sociales { background-color: #D7E3D2; }  
-.comunicacion { background-color: #DCD3E7; }  
-.logica { background-color: #F6F2CD; }  
-.filosofia { background-color: #FBD7C4; }  
 
 /* 📚 Estilo de la malla */  
 .malla {  
@@ -147,67 +99,6 @@ time, .day {
   cursor: pointer;  
   font-weight: bold;  
 }
-
-  <div class="schedule">
-  <!-- Encabezados -->
-  <div></div>
-  <div class="day">Lunes</div>
-  <div class="day">Martes</div>
-  <div class="day">Miércoles</div>
-  <div class="day">Jueves</div>
-  <div class="day">Viernes</div>
-
-  <!-- HORAS de 6am a 5pm -->
-  <div class="time">6 AM</div>
-  <div></div><div></div><div></div>
-  <div class="class psicologia" style="grid-column:5; grid-row:2/5;">
-    Psicología Evolutiva 
-    <small>Bloque 29, Salón 01<br>6–9 AM</small>
-  </div>
-  <div></div>
-
-  <div class="time">7 AM</div><div></div><div></div><div></div><div></div><div></div>
-  <div class="time">8 AM</div><div></div><div></div><div></div><div></div><div></div>
-
-  <div class="time">9 AM</div>
-  <div class="class mediacion" style="grid-column:2; grid-row:5/7;">
-    Mediación Tecnológica 
-    <small>Bloque 14, Salón 204<br>9–11 AM</small>
-  </div>
-  <div></div><div></div><div></div><div></div>
-
-  <div class="time">10 AM</div><div></div><div></div><div></div><div></div><div></div>
-  <div class="time">11 AM</div><div></div><div></div><div></div><div></div><div></div>
-
-  <div class="time">12 PM</div>
-  <div class="class sociales" style="grid-column:2; grid-row:8/11;">
-    Introducción a las Ciencias Sociales
-    <small>Bloque 14, Salón 204<br>12–3 PM</small>
-  </div>
-  <div></div><div></div><div></div><div></div>
-
-  <div class="time">1 PM</div><div></div><div></div><div></div><div></div><div></div>
-  <div class="time">2 PM</div><div></div><div></div><div></div><div></div><div></div>
-  <div class="time">3 PM</div><div></div><div></div><div></div><div></div><div></div>
-
-  <div class="time">4 PM</div>
-  <div class="class comunicacion" style="grid-column:3; grid-row:13/16;">
-    Competencias Comunicativas I 
-    <small>Bloque 4, Salón 03<br>1–4 PM</small>
-  </div>
-  <div class="class logica" style="grid-column:4; grid-row:13/16;">
-    Lógica 
-    <small>Bloque 4, Salón 03<br>1–4 PM</small>
-  </div>
-  <div class="class filosofia" style="grid-column:5; grid-row:13/16;">
-    Filosofía Antigua 
-    <small>Bloque 11, Salón 406<br>1–4 PM</small>
-  </div>
-  <div></div>
-
-  <div class="time">5 PM</div><div></div><div></div><div></div><div></div><div></div>
-  </div>
-  </div> 
   <!-- Pestaña Malla -->  
   <div id="malla" class="tab-content">  
     <div class="malla">  
