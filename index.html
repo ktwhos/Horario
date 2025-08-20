@@ -1,419 +1,384 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horario y Malla - Ciencias Sociales</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff5f7;
-      color: #333;
-      text-align: center;
-    }
+<!DOCTYPE html>  <html lang="es">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Horario y Malla - Ciencias Sociales</title>  
+  <style>  
+    body {  
+      font-family: Arial, sans-serif;  
+      background-color: #fff5f7;  
+      color: #333;  
+      text-align: center;  
+    }  h1 {  
+  color: #d36b8d;  
+  margin: 20px;  
+  font-size: 1.8em;  
+  font-weight: bold;  
+}  
 
-    h1 {
-      color: #d36b8d;
-      margin: 20px;
-      font-size: 1.8em;
-      font-weight: bold;
-    }
+/* Botones pestañas */  
+.tabs {  
+  display: flex;  
+  justify-content: center;  
+  gap: 10px;  
+  margin-bottom: 20px;  
+}  
 
-    /* Botones pestañas */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+.tab-button {  
+  background: #f4c2c2;  
+  border: none;  
+  padding: 10px 20px;  
+  border-radius: 8px;  
+  cursor: pointer;  
+  font-weight: bold;  
+}  
 
-    .tab-button {
-      background: #f4c2c2;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.tab-button.active {  
+  background: #d36b8d;  
+  color: white;  
+}  
 
-    .tab-button.active {
-      background: #d36b8d;
-      color: white;
-    }
+.tab-content {  
+  display: none;  
+}  
 
-    .tab-content {
-      display: none;
-    }
+.tab-content.active {  
+  display: block;  
+}  
 
-    .tab-content.active {
-      display: block;
-    }
+/* 🎨 Estilo del horario */  
+.schedule {  
+  display: grid;  
+  grid-template-columns: 100px repeat(5, 1fr);  
+  gap: 8px;  
+  max-width: 900px;  
+  margin: auto;  
+}  
 
-    /* 🎨 Estilo del horario */
-    .schedule {
-      display: grid;
-      grid-template-columns: 100px repeat(5, 1fr);
-      gap: 8px;
-      max-width: 900px;
-      margin: auto;
-    }
+time, .day {  
+  background: #ffeef5;  
+  padding: 6px;  
+  border-radius: 8px;  
+  font-size: 0.85em;  
+  font-weight: bold;  
+}  
 
-    time, .day {
-      background: #ffeef5;
-      padding: 6px;
-      border-radius: 8px;
-      font-size: 0.85em;
-      font-weight: bold;
-    }
+.class {  
+  padding: 10px;  
+  border-radius: 10px;  
+  font-size: 0.9em;  
+  line-height: 1.5em;  
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);  
+}  
 
-    .class {
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.9em;
-      line-height: 1.5em;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    }
+.class small {  
+  font-size: 0.7em;  
+  display: block;  
+  margin-top: 4px;  
+  color: #444;  
+}  
 
-    .class small {
-      font-size: 0.7em;
-      display: block;
-      margin-top: 4px;
-      color: #444;
-    }
+/* Colores pastel */  
+.psicologia { background-color: #F4C2C2; }  
+.mediacion { background-color: #C7E0DE; }  
+.sociales { background-color: #D7E3D2; }  
+.comunicacion { background-color: #DCD3E7; }  
+.logica { background-color: #F6F2CD; }  
+.filosofia { background-color: #FBD7C4; }  
 
-    /* Colores pastel */
-    .psicologia { background-color: #F4C2C2; }
-    .mediacion { background-color: #C7E0DE; }
-    .sociales { background-color: #D7E3D2; }
-    .comunicacion { background-color: #DCD3E7; }
-    .logica { background-color: #F6F2CD; }
-    .filosofia { background-color: #FBD7C4; }
+/* 📚 Estilo de la malla */  
+.malla {  
+  max-width: 900px;  
+  margin: auto;  
+  text-align: left;  
+}  
 
-    /* 📚 Estilo de la malla */
-    .malla {
-      max-width: 900px;
-      margin: auto;
-      text-align: left;
-    }
+.semestre {  
+  background: #f9f9f9;  
+  padding: 15px;  
+  margin: 10px 0;  
+  border-radius: 10px;  
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);  
+}  
 
-    .semestre {
-      background: #f9f9f9;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+.semestre h2 {  
+  font-size: 1.2em;  
+  color: #d36b8d;  
+  font-weight: bold;  
+  margin-bottom: 10px;  
+}  
 
-    .semestre h2 {
-      font-size: 1.2em;
-      color: #d36b8d;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.materia {  
+  margin: 5px 0;  
+  padding: 8px;  
+  border-left: 5px solid #d36b8d;  
+  background: #fff;  
+  border-radius: 5px;  
+  cursor: pointer;  
+}  
 
-    .materia {
-      margin: 5px 0;
-      padding: 8px;
-      border-left: 5px solid #d36b8d;
-      background: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.materia.locked {  
+  opacity: 0.6;  
+  cursor: not-allowed;  
+}  
 
-    .materia.locked {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+.materia small {  
+  display: block;  
+  font-size: 0.75em;  
+  color: #666;  
+}  
 
-    .materia small {
-      display: block;
-      font-size: 0.75em;
-      color: #666;
-    }
-  
-    /* 🔥 Tachado */
-    .materia.tachada {
-      text-decoration: line-through;
-      color: #777;
-      background: #eee;
-      border-left-color: #aaa;
-    }
+/* 🔥 Tachado */  
+.materia.tachada {  
+  text-decoration: line-through;  
+  color: #777;  
+  background: #eee;  
+  border-left-color: #aaa;  
+}  
 
-    /* Botón reiniciar todo */
-    .reset-all {
-      margin: 15px 0;
-      padding: 8px 15px;
-      border: none;
-      background: #d36b8d;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <h1>Ciencias Sociales</h1>
-  
- <!-- Botones pestañas -->
-  <div class="tabs">
-    <button class="tab-button active" onclick="openTab('horario')">Horario</button>
-    <button class="tab-button" onclick="openTab('malla')">Malla Curricular</button>
-  </div>
+/* Botón reiniciar todo */  
+.reset-all {  
+  margin: 15px 0;  
+  padding: 8px 15px;  
+  border: none;  
+  background: #d36b8d;  
+  color: white;  
+  border-radius: 8px;  
+  cursor: pointer;  
+  font-weight: bold;  
+}
 
-  <!-- Pestaña Horario -->
+  </style>  
+</head>  
+<body>  
+  <h1>Ciencias Sociales</h1>  
+  <!-- Botones pestañas --> 
+  <div class="tabs">  
+  <button class="tab-button active" onclick="openTab('horario')">Horario</button>  
+  <button class="tab-button" onclick="openTab('malla')">Malla Curricular</button>  
+  </div> 
+  <!-- Pestaña Horario --> 
   <div id="horario" class="tab-content active">
-    <div class="schedule">
-      <!-- Encabezados -->
-      <div></div>
-      <div class="day">Lunes</div>
-      <div class="day">Martes</div>
-      <div class="day">Miércoles</div>
-      <div class="day">Jueves</div>
-      <div class="day">Viernes</div>
+  <div class="schedule">  
+      <!-- Encabezados -->  
+      <div></div>  
+      <div class="day">Lunes</div>  
+      <div class="day">Martes</div>  
+      <div class="day">Miércoles</div>  
+      <div class="day">Jueves</div>  
+      <div class="day">Viernes</div> 
+  <!-- 6-9 -->  
+  <div class="time">6:00 - 9:00 AM</div>  
+  <div></div><div></div><div></div>  
+  <div class="class psicologia">Psicología Evolutiva <small>Bloque 29, Salón 01</small></div>  
+  <div></div>  
 
-      <!-- 6-9 -->
-      <div class="time">6:00 - 9:00 AM</div>
-      <div></div><div></div><div></div>
-      <div class="class psicologia">Psicología Evolutiva <small>Bloque 29, Salón 01</small></div>
-      <div></div>
+  <!-- 9-11 -->  
+  <div class="time">9:00 - 11:00 AM</div>  
+  <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>  
+  <div></div><div></div><div></div><div></div>  
 
-      <!-- 9-11 -->
-      <div class="time">9:00 - 11:00 AM</div>
-      <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>
-      <div></div><div></div>
+  <!-- 10-12 -->  
+  <div class="time">10:00 - 12:00 PM</div>  
+  <div></div><div></div>  
+  <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>  
+  <div></div><div></div>  
 
-      <!-- 10-12-->
-      <div class="time">10:00 - 12:00 PM</div>
-      <div></div><div></div>
-      <div class="class mediacion">Mediación Tecnológica <small>Bloque 14, Salón 204</small></div>
-      <div></div><div></div>
+  <!-- 12-3 -->  
+  <div class="time">12:00 - 3:00 PM</div>  
+  <div class="class sociales">Introducción a las Ciencias Sociales <small>Bloque 14, Salón 204</small></div>  
+  <div></div>  
 
-      <!-- 12-3 -->
-      <div class="time">12:00 - 3:00 PM</div>
-      <div class="class sociales">Introducción a las Ciencias Sociales <small>Bloque 14, Salón 204</small></div>
-      <div></div>
+  <!-- 1-4 -->  
+  <div class="time">1:00 - 4:00 PM</div>  
+  <div class="class comunicacion">Competencias Comunicativas I <small>Bloque 4, Salón 03</small></div>  
+  <div class="class logica">Lógica <small>Bloque 4, Salón 03</small></div>  
+  <div class="class filosofia">Filosofía Antigua <small>Bloque 11, Salón 406</small></div></div>
 
-  <!-- 1-4 -->
-  <div class="time">1:00 - 4:00 PM</div>
-  <div></div><div></div>
-  <div class="class comunicacion">Competencias Comunicativas I <small>Bloque 4, Salón 03</small></div>
-  <div class="class logica">Lógica <small>Bloque 4, Salón 02</small></div>
-  <div class="class filosofia">Filosofía Antigua <small>Bloque 11, Salón 406</small></div>
-</div>
+  </div> 
+  <!-- Pestaña Malla -->  
+  <div id="malla" class="tab-content">  
+    <div class="malla">  
+     <button class="reset-all" onclick="resetAll()"> Reiniciar Todo</button>  
+<!-- SEMESTRE 1 -->  
+<div class="semestre">  
+  <h2>Semestre 1</h2>  
+  <div class="materia" data-codigo="213305">Competencias Comunicativas I <small>Código: 213305</small></div>  
+  <div class="materia" data-codigo="213301">Filosofía Antigua <small>Código: 213301</small></div>  
+  <div class="materia" data-codigo="213302">Introducción a las Ciencias Sociales <small>Código: 213302</small></div>  
+  <div class="materia" data-codigo="213303">Lógica <small>Código: 213303</small></div>  
+  <div class="materia" data-codigo="213304">Mediación Tecnológica <small>Código: 213304</small></div>  
+  <div class="materia" data-codigo="213306">Psicología Evolutiva <small>Código: 213306</small></div>  
+</div>  <!-- SEMESTRE 2 -->  <div class="semestre">  
+  <h2>Semestre 2</h2>  
+  <div class="materia locked" data-codigo="213311" data-requisito="213305">Competencias Comunicativas II <small>Código: 213311 | Requisito: 213305</small></div>  
+  <div class="materia" data-codigo="213307">Geografía Física <small>Código: 213307</small></div>  
+  <div class="materia" data-codigo="213308">Historia Antigua <small>Código: 213308</small></div>  
+  <div class="materia locked" data-codigo="213309" data-requisito="213303">Interpretación Cartográfica <small>Código: 213309 | Requisito: 213303</small></div>  
+  <div class="materia" data-codigo="213310">Psicología del Aprendizaje <small>Código: 213310</small></div>  
+  <div class="materia" data-codigo="213312">Sociología General <small>Código: 213312</small></div>  
+</div>  <!-- SEMESTRE 3 -->  <div class="semestre">  
+  <h2>Semestre 3</h2>  
+  <div class="materia" data-codigo="213313">Dinámicas Espaciales y Poblacionales <small>Código: 213313</small></div>  
+  <div class="materia" data-codigo="213314">Economía Política <small>Código: 213314</small></div>  
+  <div class="materia locked" data-codigo="213315" data-requisito="213301">Filosofía Moderna <small>Código: 213315 | Requisito: 213301</small></div>  
+  <div class="materia" data-codigo="213316">Historia de la Edad Moderna y Media <small>Código: 213316</small></div>  
+  <div class="materia locked" data-codigo="213317" data-requisito="213310">Práctica Ped. Invest. I <small>Código: 213317 | Requisito: 213310</small></div>  
+  <div class="materia locked" data-codigo="213318" data-requisito="213308">Sociología de la Educación <small>Código: 213318 | Requisito: 213308</small></div>  
+</div>  <!-- SEMESTRE 4 -->  <div class="semestre">  
+  <h2>Semestre 4</h2>  
+  <div class="materia" data-codigo="213320">Antropología <small>Código: 213320</small></div>  
+  <div class="materia" data-codigo="213326">Electiva Libre <small>Código: 213326</small></div>  
+  <div class="materia locked" data-codigo="213318" data-requisito="213312">Historia Contemporánea <small>Código: 213318 | Requisito: 213312</small></div>  
+  <div class="materia locked" data-codigo="213319" data-requisito="213313">Paisaje y Medio Ambiente <small>Código: 213319 | Requisito: 213313</small></div>  
+  <div class="materia locked" data-codigo="213322" data-requisito="213317">Práctica Ped. Invest. II <small>Código: 213322 | Requisito: 213317</small></div>  
+  <div class="materia" data-codigo="213321">Sistemas Políticos <small>Código: 213321</small></div>  
+  <div class="materia" data-codigo="213323">Tendencias Pedagógicas y Didácticas <small>Código: 213323</small></div>  
+</div>  <!-- SEMESTRE 5 -->  <div class="semestre">  
+  <h2>Semestre 5</h2>  
+  <div class="materia locked" data-codigo="213324" data-requisito="213322">Currículo y Gestión Escolar <small>Código: 213324 | Requisito: 213322</small></div>  
+  <div class="materia locked" data-codigo="213329" data-requisito="213310,213303">Didáctica General <small>Código: 213329 | Requisito: 213310 y 213303</small></div>  
+  <div class="materia locked" data-codigo="213327" data-requisito="213315">Filosofía Contemporánea <small>Código: 213327 | Requisito: 213315</small></div>  
+  <div class="materia locked" data-codigo="213325" data-requisito="213319">Geografía de Colombia <small>Código: 213325 | Requisito: 213319</small></div>  
+  <div class="materia locked" data-codigo="213324" data-requisito="213318">Historia de América Latina <small>Código: 213324 | Requisito: 213318</small></div>  
+  <div class="materia locked" data-codigo="213330" data-requisito="213323">Práctica Ped. Invest. III <small>Código: 213330 | Requisito: 213323</small></div>  
+  <div class="materia" data-codigo="213332">Seminario Estudios Culturales <small>Código: 213332</small></div>  
+</div>  <!-- SEMESTRE 6 -->  <div class="semestre">  
+  <h2>Semestre 6</h2>  
+  <div class="materia locked" data-codigo="213334" data-requisito="213329">Didáctica Ciencias Sociales I <small>Código: 213334 | Requisito: 213329</small></div>  
+  <div class="materia" data-codigo="213331">Historia de Colombia <small>Código: 213331</small></div>  
+  <div class="materia" data-codigo="213336">Inglés I <small>Código: 213336</small></div>  
+  <div class="materia locked" data-codigo="213335" data-requisito="213330">Práctica Ped. Invest. IV <small>Código: 213335 | Requisito: 213330</small></div>  
+  <div class="materia" data-codigo="213328">Procesos Evaluativos <small>Código: 213328</small></div>  
+  <div class="materia" data-codigo="213325">Territorio y Región <small>Código: 213325</small></div>  
+</div>  <!-- SEMESTRE 7 -->  <div class="semestre">  
+  <h2>Semestre 7</h2>  
+  <div class="materia locked" data-codigo="213340" data-requisito="213334">Didáctica Ciencias Sociales II <small>Código: 213340 | Requisito: 213334</small></div>  
+  <div class="materia locked" data-codigo="213337" data-requisito="213331">Historia del Caribe y Córdoba <small>Código: 213337 | Requisito: 213331</small></div>  
+  <div class="materia locked" data-codigo="213342" data-requisito="213336">Inglés II <small>Código: 213342 | Requisito: 213336</small></div>  
+  <div class="materia locked" data-codigo="213338" data-requisito="213302,213326">Investigación Social I <small>Código: 213338 | Requisito: 213302 y 213326</small></div>  
+  <div class="materia locked" data-codigo="213339" data-requisito="213321">Legislación Política Educativa <small>Código: 213339 | Requisito: 213321</small></div>  
+  <div class="materia locked" data-codigo="213341" data-requisito="213335">Práctica Ped. Invest. V <small>Código: 213341 | Requisito: 213335</small></div>  
+</div>  <!-- SEMESTRE 8 -->  <div class="semestre">  
+  <h2>Semestre 8</h2>  
+  <div class="materia" data-codigo="213348">Constitución Educación Ciudadana <small>Código: 213348</small></div>  
+  <div class="materia" data-codigo="213367">Electiva Carrera I <small>Código: 213367</small></div>  
+  <div class="materia locked" data-codigo="213344" data-requisito="213327">Ética <small>Código: 213344 | Requisito: 213327</small></div>  
+  <div class="materia locked" data-codigo="213347" data-requisito="213342">Inglés III <small>Código: 213347 | Requisito: 213342</small></div>  
+  <div class="materia locked" data-codigo="213343" data-requisito="213338">Investigación Social II <small>Código: 213343 | Requisito: 213338</small></div>  
+  <div class="materia locked" data-codigo="213346" data-requisito="213329,213341">Práctica Docente I <small>Código: 213346 | Requisito: 213329 y 213341</small></div>  
+  <div class="materia locked" data-codigo="213345" data-requisito="213334">Seminario Problemas Económicos <small>Código: 213345 | Requisito: 213334</small></div>  
+</div>  <!-- SEMESTRE 9 -->  <div class="semestre">  
+  <h2>Semestre 9</h2>  
+  <div class="materia" data-codigo="213368">Electiva Carrera II <small>Código: 213368</small></div>  
+  <div class="materia locked" data-codigo="213351" data-requisito="213347">Inglés IV <small>Código: 213351 | Requisito: 213347</small></div>  
+  <div class="materia locked" data-codigo="213349" data-requisito="213343">Investigación Social III <small>Código: 213349 | Requisito: 213343</small></div>  
+  <div class="materia locked" data-codigo="213350" data-requisito="213346">Práctica Docente II <small>Código: 213350 | Requisito: 213346</small></div>  
+  <div class="materia locked" data-codigo="213352" data-requisito="213302">Razonamiento Cuantitativo <small>Código: 213352 | Requisito: 213302</small></div>  
+</div>  <!-- SEMESTRE 10 -->  <div class="semestre">  
+  <h2>Semestre 10</h2>  
+  <div class="materia locked" data-codigo="213369" data-requisito="all">Electiva Profundización <small>Código: 213369 | Requisito: TODOS previos</small></div>  
+  
+  <script>  
+  // 📌 Cambiar pestañas  
+  function openTab(tabId) {  
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));  
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));  
+    document.getElementById(tabId).classList.add('active');  
+    event.target.classList.add('active');  
+  }  // 📌 Desbloquear materias cuando se cumple el requisito
+function actualizarRequisitos() {
+document.querySelectorAll(".materia.locked").forEach(materia => {
+let req = materia.dataset.requisito;
+if (!req) return;
 
-  <!-- Pestaña Malla -->
-  <div id="malla" class="tab-content">
-    <div class="malla">
-     <button class="reset-all" onclick="resetAll()"> Reiniciar Todo</button>
-<!-- SEMESTRE 1 -->
-<div class="semestre">
-  <h2>Semestre 1</h2>
-  <div class="materia" data-codigo="213305">Competencias Comunicativas I <small>Código: 213305</small></div>
-  <div class="materia" data-codigo="213301">Filosofía Antigua <small>Código: 213301</small></div>
-  <div class="materia" data-codigo="213302">Introducción a las Ciencias Sociales <small>Código: 213302</small></div>
-  <div class="materia" data-codigo="213303">Lógica <small>Código: 213303</small></div>
-  <div class="materia" data-codigo="213304">Mediación Tecnológica <small>Código: 213304</small></div>
-  <div class="materia" data-codigo="213306">Psicología Evolutiva <small>Código: 213306</small></div>
-</div>
+if (req === "all") {  
+    let todas = document.querySelectorAll(".materia:not(.locked)");  
+    let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");  
+    if (todas.length > 0 && todas.length === tachadas.length) {  
+      materia.classList.remove("locked");  
+    }  
+  }   
+  else if (req === "practicas") {  
+    let practicas = ["213317","213322","213330","213335","213341"];  
+    let cumplidas = practicas.every(cod =>  
+      document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")  
+    );  
+    if (cumplidas) {  
+      materia.classList.remove("locked");  
+    }  
+  }   
+  else {  
+    let requisitos = req.split(",");  
+    let cumplidos = requisitos.every(cod =>  
+      document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")  
+    );  
+    if (cumplidos) {  
+      materia.classList.remove("locked");  
+    }  
+  }  
+});  
+guardarProgreso();
 
-<!-- SEMESTRE 2 -->
-<div class="semestre">
-  <h2>Semestre 2</h2>
-  <div class="materia locked" data-codigo="213311" data-requisito="213305">Competencias Comunicativas II <small>Código: 213311 | Requisito: 213305</small></div>
-  <div class="materia" data-codigo="213307">Geografía Física <small>Código: 213307</small></div>
-  <div class="materia" data-codigo="213308">Historia Antigua <small>Código: 213308</small></div>
-  <div class="materia locked" data-codigo="213309" data-requisito="213303">Interpretación Cartográfica <small>Código: 213309 | Requisito: 213303</small></div>
-  <div class="materia" data-codigo="213310">Psicología del Aprendizaje <small>Código: 213310</small></div>
-  <div class="materia" data-codigo="213312">Sociología General <small>Código: 213312</small></div>
-</div>
+}
 
-<!-- SEMESTRE 3 -->
-<div class="semestre">
-  <h2>Semestre 3</h2>
-  <div class="materia" data-codigo="213313">Dinámicas Espaciales y Poblacionales <small>Código: 213313</small></div>
-  <div class="materia" data-codigo="213314">Economía Política <small>Código: 213314</small></div>
-  <div class="materia locked" data-codigo="213315" data-requisito="213301">Filosofía Moderna <small>Código: 213315 | Requisito: 213301</small></div>
-  <div class="materia" data-codigo="213316">Historia de la Edad Moderna y Media <small>Código: 213316</small></div>
-  <div class="materia locked" data-codigo="213317" data-requisito="213310">Práctica Ped. Invest. I <small>Código: 213317 | Requisito: 213310</small></div>
-  <div class="materia locked" data-codigo="213318" data-requisito="213308">Sociología de la Educación <small>Código: 213318 | Requisito: 213308</small></div>
-</div>
+// 📌 Marcar materias tachadas y verificar desbloqueos
+document.addEventListener("click", function(e) {
+if (e.target.classList.contains("materia") && !e.target.classList.contains("locked")) {
+e.target.classList.toggle("tachada");
+actualizarRequisitos();
+checkAllCompleted();
+}
+});
 
-<!-- SEMESTRE 4 -->
-<div class="semestre">
-  <h2>Semestre 4</h2>
-  <div class="materia" data-codigo="213320">Antropología <small>Código: 213320</small></div>
-  <div class="materia" data-codigo="213326">Electiva Libre <small>Código: 213326</small></div>
-  <div class="materia locked" data-codigo="213318" data-requisito="213312">Historia Contemporánea <small>Código: 213318 | Requisito: 213312</small></div>
-  <div class="materia locked" data-codigo="213319" data-requisito="213313">Paisaje y Medio Ambiente <small>Código: 213319 | Requisito: 213313</small></div>
-  <div class="materia locked" data-codigo="213322" data-requisito="213317">Práctica Ped. Invest. II <small>Código: 213322 | Requisito: 213317</small></div>
-  <div class="materia" data-codigo="213321">Sistemas Políticos <small>Código: 213321</small></div>
-  <div class="materia" data-codigo="213323">Tendencias Pedagógicas y Didácticas <small>Código: 213323</small></div>
-</div>
+// 📌 Guardar progreso en localStorage
+function guardarProgreso() {
+let progreso = {};
+document.querySelectorAll(".materia").forEach(m => {
+let codigo = m.dataset.codigo;
+progreso[codigo] = {
+tachada: m.classList.contains("tachada"),
+locked: m.classList.contains("locked")
+};
+});
+localStorage.setItem("progresoMalla", JSON.stringify(progreso));
+}
 
-<!-- SEMESTRE 5 -->
-<div class="semestre">
-  <h2>Semestre 5</h2>
-  <div class="materia locked" data-codigo="213324" data-requisito="213322">Currículo y Gestión Escolar <small>Código: 213324 | Requisito: 213322</small></div>
-  <div class="materia locked" data-codigo="213329" data-requisito="213310,213303">Didáctica General <small>Código: 213329 | Requisito: 213310 y 213303</small></div>
-  <div class="materia locked" data-codigo="213327" data-requisito="213315">Filosofía Contemporánea <small>Código: 213327 | Requisito: 213315</small></div>
-  <div class="materia locked" data-codigo="213325" data-requisito="213319">Geografía de Colombia <small>Código: 213325 | Requisito: 213319</small></div>
-  <div class="materia locked" data-codigo="213324" data-requisito="213318">Historia de América Latina <small>Código: 213324 | Requisito: 213318</small></div>
-  <div class="materia locked" data-codigo="213330" data-requisito="213323">Práctica Ped. Invest. III <small>Código: 213330 | Requisito: 213323</small></div>
-  <div class="materia" data-codigo="213332">Seminario Estudios Culturales <small>Código: 213332</small></div>
-</div>
+// 📌 Cargar progreso
+function cargarProgreso() {
+let progreso = JSON.parse(localStorage.getItem("progresoMalla"));
+if (!progreso) return;
+document.querySelectorAll(".materia").forEach(m => {
+let codigo = m.dataset.codigo;
+if (progreso[codigo]) {
+if (progreso[codigo].tachada) m.classList.add("tachada");
+if (progreso[codigo].locked) m.classList.add("locked");
+}
+});
+}
 
-<!-- SEMESTRE 6 -->
-<div class="semestre">
-  <h2>Semestre 6</h2>
-  <div class="materia locked" data-codigo="213334" data-requisito="213329">Didáctica Ciencias Sociales I <small>Código: 213334 | Requisito: 213329</small></div>
-  <div class="materia" data-codigo="213331">Historia de Colombia <small>Código: 213331</small></div>
-  <div class="materia" data-codigo="213336">Inglés I <small>Código: 213336</small></div>
-  <div class="materia locked" data-codigo="213335" data-requisito="213330">Práctica Ped. Invest. IV <small>Código: 213335 | Requisito: 213330</small></div>
-  <div class="materia" data-codigo="213328">Procesos Evaluativos <small>Código: 213328</small></div>
-  <div class="materia" data-codigo="213325">Territorio y Región <small>Código: 213325</small></div>
-</div>
+// 📌 Reiniciar semestre
+function resetSemestre(btn) {
+let semestre = btn.closest(".semestre");
+semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+actualizarRequisitos();
+guardarProgreso();
+}
 
-<!-- SEMESTRE 7 -->
-<div class="semestre">
-  <h2>Semestre 7</h2>
-  <div class="materia locked" data-codigo="213340" data-requisito="213334">Didáctica Ciencias Sociales II <small>Código: 213340 | Requisito: 213334</small></div>
-  <div class="materia locked" data-codigo="213337" data-requisito="213331">Historia del Caribe y Córdoba <small>Código: 213337 | Requisito: 213331</small></div>
-  <div class="materia locked" data-codigo="213342" data-requisito="213336">Inglés II <small>Código: 213342 | Requisito: 213336</small></div>
-  <div class="materia locked" data-codigo="213338" data-requisito="213302,213326">Investigación Social I <small>Código: 213338 | Requisito: 213302 y 213326</small></div>
-  <div class="materia locked" data-codigo="213339" data-requisito="213321">Legislación Política Educativa <small>Código: 213339 | Requisito: 213321</small></div>
-  <div class="materia locked" data-codigo="213341" data-requisito="213335">Práctica Ped. Invest. V <small>Código: 213341 | Requisito: 213335</small></div>
-</div>
+// 📌 Reiniciar todo
+function resetAll() {
+document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
+document.querySelectorAll(".materia.locked").forEach(m => m.classList.add("locked"));
+actualizarRequisitos();
+guardarProgreso();
+}
 
-<!-- SEMESTRE 8 -->
-<div class="semestre">
-  <h2>Semestre 8</h2>
-  <div class="materia" data-codigo="213348">Constitución Educación Ciudadana <small>Código: 213348</small></div>
-  <div class="materia" data-codigo="213367">Electiva Carrera I <small>Código: 213367</small></div>
-  <div class="materia locked" data-codigo="213344" data-requisito="213327">Ética <small>Código: 213344 | Requisito: 213327</small></div>
-  <div class="materia locked" data-codigo="213347" data-requisito="213342">Inglés III <small>Código: 213347 | Requisito: 213342</small></div>
-  <div class="materia locked" data-codigo="213343" data-requisito="213338">Investigación Social II <small>Código: 213343 | Requisito: 213338</small></div>
-  <div class="materia locked" data-codigo="213346" data-requisito="213329,213341">Práctica Docente I <small>Código: 213346 | Requisito: 213329 y 213341</small></div>
-  <div class="materia locked" data-codigo="213345" data-requisito="213334">Seminario Problemas Económicos <small>Código: 213345 | Requisito: 213334</small></div>
-</div>
-
-<!-- SEMESTRE 9 -->
-<div class="semestre">
-  <h2>Semestre 9</h2>
-  <div class="materia" data-codigo="213368">Electiva Carrera II <small>Código: 213368</small></div>
-  <div class="materia locked" data-codigo="213351" data-requisito="213347">Inglés IV <small>Código: 213351 | Requisito: 213347</small></div>
-  <div class="materia locked" data-codigo="213349" data-requisito="213343">Investigación Social III <small>Código: 213349 | Requisito: 213343</small></div>
-  <div class="materia locked" data-codigo="213350" data-requisito="213346">Práctica Docente II <small>Código: 213350 | Requisito: 213346</small></div>
-  <div class="materia locked" data-codigo="213352" data-requisito="213302">Razonamiento Cuantitativo <small>Código: 213352 | Requisito: 213302</small></div>
-</div>
-
-<!-- SEMESTRE 10 -->
-<div class="semestre">
-  <h2>Semestre 10</h2>
-  <div class="materia locked" data-codigo="213369" data-requisito="all">Electiva Profundización <small>Código: 213369 | Requisito: TODOS previos</small></div>
-  <div class="materia locked" data-codigo="213354" data-requisito="all">Requisito de Grado <small>Código: 213354 | Requisito: TODOS previos</small></div>
-  <div class="materia locked" data-codigo="213353" data-requisito="practicas">Sistematización Práctica Pedagógica <small>Código: 213353 | Requisito: Prácticas previas</small></div>
-</div>
-  <script>
-  // 📌 Cambiar pestañas
-  function openTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    event.target.classList.add('active');
-  }
-
-  // 📌 Desbloquear materias cuando se cumple el requisito
-  function actualizarRequisitos() {
-    document.querySelectorAll(".materia.locked").forEach(materia => {
-      let req = materia.dataset.requisito;
-      if (!req) return;
-
-      if (req === "all") {
-        let todas = document.querySelectorAll(".materia:not(.locked)");
-        let tachadas = document.querySelectorAll(".materia.tachada:not(.locked)");
-        if (todas.length > 0 && todas.length === tachadas.length) {
-          materia.classList.remove("locked");
-        }
-      } 
-      else if (req === "practicas") {
-        let practicas = ["213317","213322","213330","213335","213341"];
-        let cumplidas = practicas.every(cod =>
-          document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
-        );
-        if (cumplidas) {
-          materia.classList.remove("locked");
-        }
-      } 
-      else {
-        let requisitos = req.split(",");
-        let cumplidos = requisitos.every(cod =>
-          document.querySelector(`.materia[data-codigo='${cod}']`)?.classList.contains("tachada")
-        );
-        if (cumplidos) {
-          materia.classList.remove("locked");
-        }
-      }
-    });
-    guardarProgreso();
-  }
-
-  // 📌 Marcar materias tachadas y verificar desbloqueos
-  document.addEventListener("click", function(e) {
-    if (e.target.classList.contains("materia") && !e.target.classList.contains("locked")) {
-      e.target.classList.toggle("tachada");
-      actualizarRequisitos(); 
-      checkAllCompleted();
-    }
-  });
-
-  // 📌 Guardar progreso en localStorage
-  function guardarProgreso() {
-    let progreso = {};
-    document.querySelectorAll(".materia").forEach(m => {
-      let codigo = m.dataset.codigo;
-      progreso[codigo] = {
-        tachada: m.classList.contains("tachada"),
-        locked: m.classList.contains("locked")
-      };
-    });
-    localStorage.setItem("progresoMalla", JSON.stringify(progreso));
-  }
-
-  // 📌 Cargar progreso
-  function cargarProgreso() {
-    let progreso = JSON.parse(localStorage.getItem("progresoMalla"));
-    if (!progreso) return;
-    document.querySelectorAll(".materia").forEach(m => {
-      let codigo = m.dataset.codigo;
-      if (progreso[codigo]) {
-        if (progreso[codigo].tachada) m.classList.add("tachada");
-        if (progreso[codigo].locked) m.classList.add("locked");
-      }
-    });
-  }
-
-  // 📌 Reiniciar semestre
-  function resetSemestre(btn) {
-    let semestre = btn.closest(".semestre");
-    semestre.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
-    actualizarRequisitos();
-    guardarProgreso();
-  }
-
-  // 📌 Reiniciar todo
-  function resetAll() {
-    document.querySelectorAll(".materia").forEach(m => m.classList.remove("tachada"));
-    document.querySelectorAll(".materia.locked").forEach(m => m.classList.add("locked"));
-    actualizarRequisitos();
-    guardarProgreso();
-  }
-
-  // 📌 Al cargar la página, restaurar progreso
-  window.onload = function() {
-    cargarProgreso();
-    actualizarRequisitos();
-  };
-    </script>
+// 📌 Al cargar la página, restaurar progreso
+window.onload = function() {
+cargarProgreso();
+actualizarRequisitos();
+};
+    
+</script>
 </body>
 </html>
